@@ -1,6 +1,6 @@
 package br.com.mecaniqa;
 
-public class Peca{
+public class Peca {
     public int codigo;
     public String nomePeca;
     public String nomeFabricante;
@@ -10,7 +10,7 @@ public class Peca{
 
     private static final int MAX_PECAS = 100;
     public static Peca[] pecas = new Peca[MAX_PECAS];
-    private static int totalPecas = 0;
+    public static int totalPecas = 0;
 
     public Peca(int codigo, String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
         this.codigo = codigo;
@@ -33,12 +33,16 @@ public class Peca{
     public static void mostrarPeca(){
         System.out.println("LISTA DE PEÇAS");
         for (int i = 0; i < totalPecas; i++) {
-            System.out.println(
-                    "Índice " + i + ": " +
-                            "Código: " + pecas[i].codigo +
-                            " | Nome: " + pecas[i].nomePeca +
-                            " | Preço: R$ " + pecas[i].precoVenda +
-                            " | Quantidade: " + pecas[i].quantidade);
+            if (pecas[i] != null){
+                System.out.println(
+                        "Índice " + i + ": " +
+                                "Código: " + pecas[i].codigo +
+                                " | Nome: " + pecas[i].nomePeca +
+                                " | Preço: R$ " + pecas[i].precoVenda +
+                                " | Quantidade: " + pecas[i].quantidade);
+            }
+            else
+                System.out.println("Índice " + i + ": " + " Vazio");
         }
     }
 }
