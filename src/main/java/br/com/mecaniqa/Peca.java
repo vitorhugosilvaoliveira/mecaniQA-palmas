@@ -8,6 +8,10 @@ public class Peca{
     public double precoVenda;
     public int quantidade;
 
+    private static final int MAX_PECAS = 100;
+    public static Peca[] pecas = new Peca[MAX_PECAS];
+    private static int totalPecas = 0;
+
     public Peca(int codigo, String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
         this.codigo = codigo;
         this.nomePeca = nomePeca;
@@ -15,5 +19,26 @@ public class Peca{
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
         this.quantidade = quantidade;
+    }
+
+    public static void inserirPeca(Peca nome){
+        if(totalPecas < MAX_PECAS){
+            pecas[totalPecas] = nome;
+            totalPecas++;
+        }else {
+            System.out.println("Array cheio!");
+        }
+    }
+
+    public static void mostrarPeca(){
+        System.out.println("LISTA DE PEÇAS");
+        for (int i = 0; i < totalPecas; i++) {
+            System.out.println(
+                    "Índice " + i + ": " +
+                            "Código: " + pecas[i].codigo +
+                            " | Nome: " + pecas[i].nomePeca +
+                            " | Preço: R$ " + pecas[i].precoVenda +
+                            " | Quantidade: " + pecas[i].quantidade);
+        }
     }
 }
