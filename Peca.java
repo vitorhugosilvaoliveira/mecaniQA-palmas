@@ -26,7 +26,7 @@ public class Peca {
             pecas[totalPecas] = nome;
             totalPecas++;
         }else {
-            System.out.println("Array cheio!");
+            System.out.println("cheio!");
         }
     }
 
