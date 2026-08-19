@@ -41,8 +41,35 @@ public class Peca {
                                 " | Preço: R$ " + pecas[i].precoVenda +
                                 " | Quantidade: " + pecas[i].quantidade);
             }
-            else
-                System.out.println("Índice " + i + ": " + " Vazio");
+            else{
+                System.out.println("Índice " + i + " : " + " Vazio");}
+        }
+    }
+    public static int procurarPeca(int codigo){
+        for (int i = 0; i < pecas.length; i++) {
+            if (pecas[i].codigo == codigo) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void deletarPeca(Peca y) {
+         int indexPeca = procurarPeca(y.codigo);
+
+        int indexValido = 0;
+        if( indexPeca >= 0 && indexPeca < totalPecas){
+            pecas[indexPeca] = null ;
+            Peca.totalPecas--;
+        }
+        for (int i = 0; i < pecas.length; i++) {
+            if (pecas[i] != null) {
+                pecas[indexValido] = pecas[i];
+                if (i != indexValido) {
+                    pecas[i] = null;
+                }
+                indexValido++;
+            }
         }
     }
 }
