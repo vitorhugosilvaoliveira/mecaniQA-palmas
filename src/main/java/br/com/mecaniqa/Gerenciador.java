@@ -17,7 +17,7 @@ public class Gerenciador {
         Peca.inserirPeca(pc4);
         Peca.deletarPeca(2);
         Peca.inserirPeca(pc5);
-        System.out.println(Peca.buscarPeca(pc3));
+        System.out.println(Peca.buscarPeca(pc4));
 
     }
 }
