@@ -1,5 +1,7 @@
 package br.com.mecaniqa;
 
+import static br.com.mecaniqa.Peca.pecas;
+
 public class Gerenciador {
 
     public static void main(String[] args) {

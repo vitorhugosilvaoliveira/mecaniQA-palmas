@@ -53,7 +53,6 @@ public class Peca {
         proximoIndex++;
     }
 
-
     public static void mostrarPeca(){
         System.out.println("LISTA DE PECAS");
         for (int i = 0; i < proximoIndex; i++) {
