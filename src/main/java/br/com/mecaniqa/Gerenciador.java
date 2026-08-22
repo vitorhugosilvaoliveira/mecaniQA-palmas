@@ -14,28 +14,9 @@ public class Gerenciador {
         Peca.inserirPeca(pc2);
         Servico.inserirServico(serv1);
         Servico.mostrarServico();
-        deletarPeca(pc1);
         Peca.inserirPeca(pc1);
         Peca.mostrarPeca();
     }
-    public static void deletarPeca(Peca y) {
-        for (int i = 0; i < pecas.length; i++) {
-            if (pecas[i] == y) {
-                pecas[i] = null;
-                Peca.totalPecas--;
-            }
 
-        }
-        int indexValido = 0;
-        for (int i = 0; i < pecas.length; i++) {
-            if (pecas[i] != null) {
-                pecas[indexValido] = pecas[i];
-                if (i != indexValido) {
-                    pecas[i] = null;
-                }
-                indexValido++;
-            }
-        }
-    }
 }
 
