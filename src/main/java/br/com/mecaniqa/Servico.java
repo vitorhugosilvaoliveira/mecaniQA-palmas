@@ -27,12 +27,12 @@ public class Servico{
     }
 
     public static void mostrarServico(){
-        System.out.println("LISTA DE SERVIÇOS");
+        System.out.println("LISTA DE SERVICOS");
         for (int i = 0; i < totalServicos; i++) {
             System.out.println(
-                    "Índice " + i + ": " +
-                            "Código: " + servicos[i].codigo +
-                            " | Descrição: " + servicos[i].descricao +
+                    "Indice " + i + ": " +
+                            "Codigo: " + servicos[i].codigo +
+                            " | Descricao: " + servicos[i].descricao +
                             " | Tempo: " + servicos[i].tempoMinutos + " minutos " +
                             " | Valor: R$ " + servicos[i].valor);
         }

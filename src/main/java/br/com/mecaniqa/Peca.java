@@ -10,7 +10,7 @@ public class Peca {
 
     private static final int MAX_PECAS = 100;
     public static Peca[] pecas = new Peca[MAX_PECAS];
-    public static int totalPecas = 0;
+    public static int proximoIndex = 0;
 
     public Peca(int codigo, String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
         this.codigo = codigo;
@@ -21,55 +21,77 @@ public class Peca {
         this.quantidade = quantidade;
     }
 
-    public static void inserirPeca(Peca nome){
-        if(totalPecas < MAX_PECAS){
-            pecas[totalPecas] = nome;
-            totalPecas++;
-        }else {
-            System.out.println("cheio!");
+    public static void inserirPeca(Peca nome) {
+
+        //verifica se o vetor esta cheio
+        if (proximoIndex < MAX_PECAS){
+            pecas[proximoIndex] = nome;
+            proximoIndex++;
+            return;
         }
+        System.out.println("O array esta cheio");
+    }
+
+    public static void inserirPosicaoPeca(Peca nome, int index){
+
+        //verifica se o index é válido
+        if (index >= proximoIndex || index < 0){
+            System.out.println("index invalido");
+            return;
+        }
+        //verifica se o vetor está cheio
+        if (proximoIndex >= MAX_PECAS){
+            System.out.println("O array esta cheio");
+            return;
+        }
+        //Leva os elementos do vetor para a direita
+        for (int i = proximoIndex; i > index; i--){
+            pecas[i] = pecas[i - 1];
+        }
+        //insere a peça
+        pecas[index] = nome;
+        proximoIndex++;
     }
 
     public static void mostrarPeca(){
-        System.out.println("LISTA DE PEÇAS");
-        for (int i = 0; i < totalPecas; i++) {
-            if (pecas[i] != null){
-                System.out.println(
-                        "Índice " + i + ": " +
-                                "Código: " + pecas[i].codigo +
-                                " | Nome: " + pecas[i].nomePeca +
-                                " | Preço: R$ " + pecas[i].precoVenda +
-                                " | Quantidade: " + pecas[i].quantidade);
-            }
-            else{
-                System.out.println("Índice " + i + " : " + " Vazio");}
+        System.out.println("LISTA DE PECAS");
+        for (int i = 0; i < proximoIndex; i++) {
+            System.out.println(
+                    "Indice " + i + ": " +
+                            "Codigo: " + pecas[i].codigo +
+                            " | Nome: " + pecas[i].nomePeca +
+                            " | Preco: R$ " + pecas[i].precoVenda +
+                            " | Quantidade: " + pecas[i].quantidade);
         }
     }
-    public static int procurarPeca(int codigo){
-        for (int i = 0; i < pecas.length; i++) {
-            if (pecas[i].codigo == codigo) {
+
+    public static void deletarPeca(int index){
+
+        //verifica se o index é valido
+        if (index >= proximoIndex || index < 0){
+            System.out.println("index invalido");
+            return;
+        }
+
+        //traz os elementos para a esquerda sobrescrevendo a peça do index removido
+        for(int i = index; i < proximoIndex; i++){
+            pecas[i] = pecas[i + 1];
+        }
+        proximoIndex--;
+
+    }
+
+    public static int buscarPeca(Peca nome){
+        //varre o vetor procurando
+        for (int i = 0; i < proximoIndex; i++){
+            if (pecas[i] == nome)
                 return i;
-            }
         }
         return -1;
     }
 
-    public static void deletarPeca(Peca y) {
-         int indexPeca = procurarPeca(y.codigo);
-
-        int indexValido = 0;
-        if( indexPeca >= 0 && indexPeca < totalPecas){
-            pecas[indexPeca] = null ;
-            Peca.totalPecas--;
-        }
-        for (int i = 0; i < pecas.length; i++) {
-            if (pecas[i] != null) {
-                pecas[indexValido] = pecas[i];
-                if (i != indexValido) {
-                    pecas[i] = null;
-                }
-                indexValido++;
-            }
-        }
+    //retorna o total de peças com base no index válido naquele momento
+    public static int totalPecas(){
+        return proximoIndex;
     }
 }

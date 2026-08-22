@@ -55,7 +55,23 @@ public class MecaniQAApplication {
                     break;
                 case 6:
                     System.out.println("Opção 6 selecionada: Adicionar Serviço");
-                    // Lógica para adicionar serviço
+                        System.out.print("Código do serviço: ");
+                        int codigo = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Descrição do serviço: ");
+                        String descricao = scanner.nextLine();
+
+                        System.out.print("Tempo em minutos: ");
+                        int tempo = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Valor do serviço: ");
+                        double valor = Double.parseDouble(scanner.nextLine());
+
+                        Servico servico = new Servico(codigo, descricao, tempo, valor);
+
+                        Servico.inserirServico(servico);
+
+                        System.out.println("Serviço cadastrado com sucesso!");
                     break;
                 case 7:
                     System.out.println("Opção 7 selecionada: Listar Serviços");
