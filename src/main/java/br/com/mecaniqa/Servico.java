@@ -79,6 +79,10 @@ public class Servico{
             }
             // Diminui para marcar o proximo index valido
             indexValido--;
+
+            System.out.println("Servico removido com sucesso!");
+        }else{
+            System.out.println("index invalido");
         }
     }
 

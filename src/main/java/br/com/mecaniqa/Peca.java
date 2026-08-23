@@ -62,25 +62,26 @@ public class Peca {
                     "Indice " + i + ": " +
                             "Codigo: " + pecas[i].codigo +
                             " | Nome: " + pecas[i].nomePeca +
-                            " | Preco: R$ " + pecas[i].precoVenda +
+                            " | Preço: R$ " + pecas[i].precoVenda +
                             " | Quantidade: " + pecas[i].quantidade);
         }
     }
 
-    public static void deletarPeca(int index){
+    public static void deletarPeca(int codigo){
+        int indexPeca = buscarPeca(codigo);
 
-        //verifica se o index é valido
-        if (index >= proximoIndex || index < 0){
+        if(indexPeca >= 0 && indexPeca < proximoIndex){
+            //traz os elementos para a esquerda sobrescrevendo a peça do index removido
+            for(int i = indexPeca; i < proximoIndex - 1; i++){
+                pecas[i] = pecas[i + 1];
+            }
+            // Diminui para marcar o proximo index valido
+            proximoIndex--;
+
+            System.out.println("Peça removida com sucesso!");
+        }else{
             System.out.println("index invalido");
-            return;
         }
-
-        //traz os elementos para a esquerda sobrescrevendo a peça do index removido
-        for(int i = index; i < proximoIndex; i++){
-            pecas[i] = pecas[i + 1];
-        }
-        proximoIndex--;
-
     }
 
     public static int buscarPeca(int codigo){
