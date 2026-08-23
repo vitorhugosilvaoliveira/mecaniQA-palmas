@@ -1,5 +1,7 @@
 package br.com.mecaniqa;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class Peca {
     public int codigo;
     public String nomePeca;
@@ -81,17 +83,30 @@ public class Peca {
 
     }
 
-    public static int buscarPeca(Peca nome){
+    public static int buscarPeca(int codigo){
         //varre o vetor procurando
         for (int i = 0; i < proximoIndex; i++){
-            if (pecas[i] == nome)
+            if (pecas[i].codigo == codigo)
                 return i;
         }
         return -1;
     }
 
     //retorna o total de peças com base no index válido naquele momento
-    public static int totalPecas(){
-        return proximoIndex;
+    public static void totalPecas(){
+        int  total = proximoIndex;
+        System.out.println("TOTAL DE PECAS: " + total);
+    }
+
+    public static void mudarPeca(int codigoBusca, String novoNome, double novoValorVenda, int novaQuantidade){
+        int codigoPeca = buscarPeca(codigoBusca);
+        if(codigoPeca != -1){
+            pecas[codigoPeca].nomePeca = novoNome;
+            pecas[codigoPeca].precoVenda = novoValorVenda;
+            pecas[codigoBusca].quantidade = novaQuantidade;
+            System.out.println("Peça atualizada com sucesso!");
+        }else {
+            System.out.println("Erro: Peça não encontrada.");
+        }
     }
 }
