@@ -8,7 +8,6 @@ public class Servico{
 
     private static final int MAX_SERVICOS = 50;
     public static Servico[] servicos = new Servico[MAX_SERVICOS];
-    public static int totalServicos = 0;
     public static int indexValido = 0;
 
     public Servico(int codigo, String descricao, int tempo, double valor){
@@ -83,9 +82,9 @@ public class Servico{
         }
     }
 
-    public static void totalPecas(){
+    public static void totalServicos(){
         int  total = indexValido;
-        System.out.println("TOTAL DE PECAS: " + total);
+        System.out.println("TOTAL DE Serviços: " + total);
     }
     public static void mudarServico(int codigoBusca, String novaDescricao, int novoTempo, double novoValor){
         int codigoServico = procurarServico(codigoBusca);

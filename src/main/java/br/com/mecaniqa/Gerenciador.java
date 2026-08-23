@@ -21,6 +21,7 @@ public class Gerenciador {
         Servico.mostrarServico();
         Servico.mudarServico(1,"Troca do oleo do carro.", 45,160.45);
         Servico.mostrarServico();
+        Servico.totalServicos();
 
         Peca.inserirPeca(pc1);
         Peca.mostrarPeca();
