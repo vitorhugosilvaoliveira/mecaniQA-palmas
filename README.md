@@ -23,4 +23,3 @@ Neste primeiro desafio, você e sua equipe implementarão um MVP na linguagem de
 * Matheus Barbosa dos Santos Carvalho
 * Victor Carvalho Cedraz
 * Vitor Hugo da Silva Oliveira
-* Ycaro Pinheiro de Jesus
