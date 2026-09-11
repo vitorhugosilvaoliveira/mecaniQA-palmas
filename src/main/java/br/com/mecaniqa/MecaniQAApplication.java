@@ -69,7 +69,7 @@ public class MecaniQAApplication {
 
                         Servico servico = new Servico(codigo, descricao, tempo, valor);
 
-                        Servico.inserirServico(servico);
+                        Gerenciador.inserirServico(servico);
 
                         System.out.println("Serviço cadastrado com sucesso!");
                     break;
