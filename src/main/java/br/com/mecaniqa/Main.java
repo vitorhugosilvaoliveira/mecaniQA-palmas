@@ -1,5 +1,8 @@
 package br.com.mecaniqa;
 
+import br.com.mecaniqa.entidades.*;
+import br.com.mecaniqa.enums.Categoria;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +12,15 @@ public class Main {
         Servico serv1 = new Servico(1,"manuntenção do motor do carro",65,300.00);
         Servico serv2 = new Servico(2,"manuntenção do motor do moto",30,150.00);
 
+        Cliente cliente1 = new Cliente("Márcio Andrade","75634908","Andramarc@gamil.com");
+        Cliente cliente2 = new Cliente("Renata Silva","75634908","Andramarc@gamil.com");
+        Cliente cliente3 = new Cliente("Ana souza","75634908","Andramarc@gamil.com");
+
+        System.out.println(cliente2.codigo);
+
+        Carro carro = new Carro("Fiat Uno","123abc",2003,"basico",Categoria.HATCH ,cliente1.codigo);
+
+        System.out.println(carro.codigoDono);
 
         Gerenciador.inserirServico(serv1);
         Gerenciador.inserirServico(serv2);

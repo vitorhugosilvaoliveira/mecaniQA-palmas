@@ -1,6 +1,4 @@
-package br.com.mecaniqa;
-
-import org.w3c.dom.ls.LSOutput;
+package br.com.mecaniqa.entidades;
 
 public class Peca {
     public int codigo;

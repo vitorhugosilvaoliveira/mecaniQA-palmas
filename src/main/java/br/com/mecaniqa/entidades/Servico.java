@@ -1,4 +1,4 @@
-package br.com.mecaniqa;
+package br.com.mecaniqa.entidades;
 
 public class Servico{
     public int codigo;

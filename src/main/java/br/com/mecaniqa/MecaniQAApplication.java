@@ -1,5 +1,8 @@
 package br.com.mecaniqa;
 
+import br.com.mecaniqa.entidades.Gerenciador;
+import br.com.mecaniqa.entidades.Servico;
+
 import java.util.Scanner;
 
 public class MecaniQAApplication {

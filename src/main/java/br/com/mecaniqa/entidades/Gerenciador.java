@@ -1,4 +1,4 @@
-package br.com.mecaniqa;
+package br.com.mecaniqa.entidades;
 
 public class Gerenciador {
     private static final int MAX_SERVICOS = 50;
