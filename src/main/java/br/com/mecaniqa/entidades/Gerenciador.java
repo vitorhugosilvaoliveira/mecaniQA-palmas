@@ -5,6 +5,7 @@ public class Gerenciador {
     public static Servico[] servicos = new Servico[MAX_SERVICOS];
     public static int indexValido = 0;
 
+
     private static final int MAX_PECAS = 100;
     public static Peca[] pecas = new Peca[MAX_PECAS];
     public static int proximoIndex = 0;
