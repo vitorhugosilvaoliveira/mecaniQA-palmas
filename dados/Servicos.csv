@@ -1,1 +1,41 @@
-Código; Descrição; Tempo (minutos); Valor
+﻿Código; Descrição; Tempo (minutos); Valor
+18;Troca da Bomba d'Água;120;250.0
+5;Troca do Filtro de Combustível;20;40.0
+32;Troca de Bieletas;30;60.0
+1;Troca de Óleo do Motor;30;80.0
+24;Troca de Kit de Batentes e Coifas;90;160.0
+10;Troca de Discos de Freio Dianteiros;60;150.0
+39;Regulagem do Freio de Mão;30;60.0
+15;Limpeza dos Bicos Injetores;90;220.0
+3;Troca do Filtro de Ar do Motor;15;25.0
+27;Troca do Alternador;90;200.0
+12;Sangria e Troca do Fluido de Freio;50;110.0
+40;Troca da Palheta do Limpador de Pára-brisa;10;20.0
+7;Balanceamento de Rodas (4 rodas);40;80.0
+21;Carga de Gás do Ar Condicionado;60;180.0
+34;Troca de Coifa da Homocinética;60;120.0
+9;Troca de Pastilhas de Freio Dianteiras;60;120.0
+16;Troca da Correia Dentada e Tensor;180;350.0
+2;Troca do Filtro de Óleo;15;30.0
+29;Troca do Aditivo e Limpeza do Radiador;60;130.0
+37;Troca do Fluido da Transmissão Manual;45;95.0
+8;Rodízio de Pneus;30;50.0
+22;Troca de Amortecedores Dianteiros;120;280.0
+14;Troca de Cabos de Ignição;30;70.0
+31;Troca de Terminais de Direção;45;85.0
+4;Troca do Filtro de Cabine/Ar Condicionado;20;35.0
+25;Troca do Kit de Embreagem;240;500.0
+11;Troca de Sapatas/Lonas de Freio Traseiras;75;140.0
+36;Diagnóstico Eletrônico via Scanner OBD2;30;100.0
+19;Troca da Válvula Termostática;90;180.0
+28;Reparo do Motor de Arranque;120;220.0
+6;Alinhamento de Direção;45;90.0
+33;Troca de Buchas da Barra Estabilizadora;60;110.0
+17;Troca da Correia de Acessórios (Poli-V);45;90.0
+38;Troca do Fluido da Transmissão Automática;120;300.0
+13;Troca de Velas de Ignição;40;90.0
+26;Troca da Bateria;20;40.0
+30;Troca de Pivô de Suspensão;50;90.0
+20;Higienização do Ar Condicionado;45;100.0
+35;Troca da Junta Homocinética;90;180.0
+23;Troca de Amortecedores Traseiros;90;200.0

@@ -3,6 +3,7 @@ package br.com.mecaniqa;
 import br.com.mecaniqa.csv.EscritorCsv;
 import br.com.mecaniqa.entidades.*;
 import br.com.mecaniqa.enums.Categoria;
+import br.com.mecaniqa.enums.ChaveOrdenacao;
 import br.com.mecaniqa.enums.Status;
 
 public class Main {

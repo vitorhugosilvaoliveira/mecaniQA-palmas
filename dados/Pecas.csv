@@ -1,1 +1,31 @@
-CÃ³digo; Nome; Fabricante; PreÃ§o de custo; PreÃ§o de venda; Quantidade
+Código	 Nome	 Fabricante	 Preço de custo	 Preço de venda	 Quantidade
+15	Embreagem Kit	LUK	450.0	780.0	10
+3	Pastilha de Freio	Fras-le	80.0	140.0	30
+28	Pivô de Suspensão	Viemar	50.0	95.0	32
+1	Filtro de Óleo	Tecfil	25.0	45.0	50
+19	Lâmpada H7	Philips	18.0	35.0	80
+7	Amortecedor Dianteiro	Monroe	250.0	420.0	12
+25	Alternador	Valeo	520.0	890.0	5
+12	Bomba d'Água	Urba	110.0	195.0	18
+2	Filtro de Ar	Mann Filter	30.0	55.0	40
+30	Óleo de Motor 5W30	Castrol	32.0	60.0	120
+9	Bateria 60Ah	Moura	320.0	520.0	15
+21	Lanterna Traseira	Fitam	140.0	240.0	10
+4	Disco de Freio	Fremax	120.0	210.0	20
+17	Pneu 175/65 R14	Pirelli	260.0	410.0	40
+6	Cabo de Ignição	Bosch	60.0	110.0	25
+23	Bomba de Combustível	Delphi	190.0	330.0	15
+10	Correia Dentada	Dayco	45.0	85.0	35
+29	Bieleta Dianteira	Axios	35.0	70.0	40
+14	Termostato	MTE-Thomson	40.0	75.0	28
+5	Vela de Ignição	NGK	15.0	32.0	100
+22	Palheta do Limpador	Dyna	22.0	45.0	60
+11	Tensor da Correia	SKF	70.0	130.0	22
+26	Motor de Arranque	Bosch	480.0	820.0	7
+8	Amortecedor Traseiro	Cofap	210.0	360.0	14
+18	Pneu 205/55 R16	Michelin	380.0	600.0	24
+27	Homocinética	Nakata	130.0	230.0	16
+13	Radiador	Visconde	280.0	480.0	8
+20	Farol Dianteiro	Arteb	310.0	530.0	6
+24	Sensor MAP	Magneti Marelli	85.0	155.0	20
+16	Junta do Cabeçote	Sabo	55.0	105.0	30

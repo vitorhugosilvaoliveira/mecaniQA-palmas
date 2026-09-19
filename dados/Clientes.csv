@@ -1,1 +1,21 @@
-Código; Nome; Telefone; Email
+﻿Código; Nome; Telefone; Email
+1;Ana Silva;(11) 98765-4321;ana.silva@email.com
+2;Bruno Oliveira;(21) 97654-3210;bruno.o@email.com
+3;Carla Souza;(31) 96543-2109;carla.souza@email.com
+4;Daniel Santos;(41) 95432-1098;daniel.santos@email.com
+5;Eduarda Lima;(51) 94321-0987;eduarda.lima@email.com
+6;Felipe Ferreira;(61) 93210-9876;felipe.f@email.com
+7;Gabriela Rocha;(71) 92109-8765;gabi.rocha@email.com
+8;Henrique Costa;(81) 91098-7654;henrique.c@email.com
+9;Isabela Martins;(91) 90198-7654;isabela.m@email.com
+10;João Pedro;(11) 91234-5678;joao.pedro@email.com
+11;Karen Ribeiro;(21) 92345-6789;karen.r@email.com
+12;Lucas Almeida;(31) 93456-7890;lucas.a@email.com
+13;Mariana Carvalho;(41) 94567-8901;mariana.c@email.com
+14;Nicolas Barbosa;(51) 95678-9012;nicolas.b@email.com
+15;Olivia Gomes;(61) 96789-0123;olivia.gomes@email.com
+16;Paulo Araujo;(71) 97890-1234;paulo.a@email.com
+17;Quintino Neto;(81) 98901-2345;quintino.n@email.com
+18;Rafaela Dias;(91) 99012-3456;rafaela.dias@email.com
+19;Samuel Fernandes;(11) 90123-4567;samuel.f@email.com
+20;Tatiane Mendes;(21) 91122-3344;tatiane.mendes@email.com
