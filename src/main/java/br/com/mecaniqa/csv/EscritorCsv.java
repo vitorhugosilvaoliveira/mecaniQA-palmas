@@ -98,7 +98,7 @@ public static void atualizarEstaticoCsv(Object[] lista, String caminhoArquivo, S
                 pw.println(head.getValue());
                 head = head.getProximo();
             }
-                pw.println(head.getProximo());
+                pw.println(head.getValue());
         }
         catch (IOException e){
 

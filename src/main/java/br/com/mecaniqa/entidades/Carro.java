@@ -25,7 +25,9 @@ public class Carro {
         this.estiloCarroceria = estiloCarroceria;
         this.categoria = categoria;
         this.codigoDono = codigoDono;
+
         cadastrarPlaca(this.placa);
+        appendCarro(this);
     }
 
     public String toString() {

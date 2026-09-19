@@ -42,7 +42,7 @@ public class Main {
 
     private static void exportarCarroCsv(){
         final String arquivo = "./dados/Carros.csv";
-        final String cabecalho = "Modelo; Placa; Total de servicos";
+        final String cabecalho = "Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;";
 
         EscritorCsv.atualizarDinamicoCsv(Carro.inicio,arquivo,cabecalho);
     }
