@@ -70,7 +70,7 @@ public class MecaniQAApplication {
                         System.out.print("Valor do serviço: ");
                         double valor = Double.parseDouble(scanner.nextLine());
 
-                        Servico servico = new Servico(codigo, descricao, tempo, valor);
+                        Servico servico = new Servico(descricao, tempo, valor);
 
                         Gerenciador.inserirServico(servico);
 

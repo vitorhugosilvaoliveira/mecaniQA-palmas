@@ -1,5 +1,7 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.csv.EscritorCsv;
+import br.com.mecaniqa.nos.NoOrdemServico;
 import br.com.mecaniqa.nos.NoServico;
 import br.com.mecaniqa.enums.Status;
 
@@ -10,6 +12,7 @@ public class OrdemServico {
     public Servico servico;
     public int totalServico;
     public NoServico head = null;
+    public static NoOrdemServico inicio = null;
 
     public OrdemServico(Status tipoOrdeServico, Servico servico) {
         this.codigo = contadorId++;
@@ -17,7 +20,12 @@ public class OrdemServico {
         this.servico = servico;
         if (servico != null) {
             appendServico(servico);
+            appendOs(this);
         }
+    }
+
+    public String toString() {
+        return this.codigo + ";" + this.statusOrdeServico + ";" + this.totalServico;
     }
 
     public void appendServico(Servico servico) {
@@ -32,6 +40,19 @@ public class OrdemServico {
             aux.next = novoNo;
         }
         this.totalServico++;
+    }
+
+    public void appendOs(OrdemServico os) {
+        NoOrdemServico novoNo = new NoOrdemServico(os);
+        if (inicio == null) {
+            inicio = novoNo;
+        } else {
+            NoOrdemServico aux = inicio;
+            while (aux.next != null){
+                aux = aux.next;
+            }
+            aux.next = novoNo;
+        }
     }
 
     public static int quantidadeServico(OrdemServico ordem) {
