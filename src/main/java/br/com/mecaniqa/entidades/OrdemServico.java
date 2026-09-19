@@ -15,6 +15,9 @@ public class OrdemServico {
     public static NoOrdemServico inicio = null;
 
     public OrdemServico(Status tipoOrdeServico, Servico servico) {
+        if(tipoOrdeServico == Status.FINALIZADO) {
+            throw new IllegalArgumentException("Não é possível criar uma ordem de serviço com estado FINALIZADO.");
+        }
         this.codigo = contadorId++;
         this.statusOrdeServico = tipoOrdeServico;
         this.servico = servico;
