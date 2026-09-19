@@ -1,5 +1,8 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.nos.NoOrdemServico;
+import br.com.mecaniqa.nos.NoPedido;
+
 /**
  * Pedido implementado com uma lista simplesmente encadeada manual.
  */
@@ -11,6 +14,7 @@ public class Pedido {
     private ItemPedido fim;
     private int quantidadeItens;
     private boolean fechado;
+    public static NoPedido head = null;
 
     public Pedido() {
         this.codigo = contadorId++;
@@ -18,6 +22,21 @@ public class Pedido {
         this.fim = null;
         this.quantidadeItens = 0;
         this.fechado = false;
+        appendPedido(this);
+    }
+
+    public String toString() {
+        return this.codigo + ";" + this.quantidadeItens + ";" + tratarAtributo(String.valueOf(this.fechado));
+    }
+    //metodo interno para ajustar o String e evitar que quebre o arquivo csv
+    private String tratarAtributo(String atributo){
+        if (atributo == null)
+            return "";
+        if (atributo.contains(";") || atributo.contains("\"") || atributo.contains("\n")){
+            atributo = atributo.replace("\"", "\"\"");
+            return "\"" + atributo + "\"";
+        }
+        return atributo;
     }
 
     public void adicionarItem(Peca peca, int quantidade) {
@@ -34,6 +53,19 @@ public class Pedido {
         }
 
         quantidadeItens++;
+    }
+
+    public void appendPedido(Pedido pedido) {
+        NoPedido novoNo = new NoPedido(pedido);
+        if (head == null) {
+            head = novoNo;
+        } else {
+            NoPedido aux = head;
+            while (aux.next != null){
+                aux = aux.next;
+            }
+            aux.next = novoNo;
+        }
     }
 
     public boolean removerItem(int codigoPeca) {

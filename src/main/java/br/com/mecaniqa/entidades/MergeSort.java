@@ -26,7 +26,7 @@ public class MergeSort {
         int i = 0;
         int j = 0;
         int k = inicio;
-        while(i < esquerdo && j < direita){
+        while(i < esquerdo && j < direito){
             if(arrayEsq[i] <= arrayDireita[j]){
                 array[k] = arrayEsq[i];
                 i++;

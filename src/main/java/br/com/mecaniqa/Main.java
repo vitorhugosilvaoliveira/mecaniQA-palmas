@@ -11,12 +11,13 @@ public class Main {
 
     }
 
+    //metodos para exportar as listas para o csv
     private static void exportarPecaCsv(){
 
-        final String arquivoPecas = "./dados/Pecas.csv";
-        final String cabecalhoPecas = "Código; Nome; Fabricante; Preço de custo; Preço de venda; Quantidade";
+        final String arquivo = "./dados/Pecas.csv";
+        final String cabecalho = "Código; Nome; Fabricante; Preço de custo; Preço de venda; Quantidade";
 
-        EscritorCsv.atualizarEstaticoCsv(Gerenciador.pecas,arquivoPecas,cabecalhoPecas);
+        EscritorCsv.atualizarEstaticoCsv(Gerenciador.pecas,arquivo,cabecalho);
     }
 
     private static void exportarServicoCsv(){
@@ -45,6 +46,14 @@ public class Main {
         final String cabecalho = "Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;";
 
         EscritorCsv.atualizarDinamicoCsv(Carro.inicio,arquivo,cabecalho);
+    }
+
+    private static void exportarPedidoCsv(){
+
+        final String arquivo = "./dados/Pedidos.csv";
+        final String cabecalho = "Código; Quantidade de itens; Status (fechado)";
+
+        EscritorCsv.atualizarDinamicoCsv(Pedido.head,arquivo,cabecalho);
     }
 
 }
