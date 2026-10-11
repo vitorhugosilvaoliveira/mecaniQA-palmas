@@ -3,7 +3,7 @@ package br.com.mecaniqa.nos;
 import br.com.mecaniqa.entidades.Carro;
 import br.com.mecaniqa.interfaces.No;
 
-public class NoCarro implements No {
+public class NoCarro implements No<NoCarro> {
 
     public Carro value;
     public NoCarro next;

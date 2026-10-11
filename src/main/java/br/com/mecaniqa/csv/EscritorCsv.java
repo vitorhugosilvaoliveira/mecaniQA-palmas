@@ -1,107 +1,87 @@
 package br.com.mecaniqa.csv;
 
+import br.com.mecaniqa.entidades.Carro;
 import br.com.mecaniqa.entidades.Cliente;
+import br.com.mecaniqa.entidades.Gerenciador;
 import br.com.mecaniqa.interfaces.No;
-import br.com.mecaniqa.nos.NoCliente;
-import br.com.mecaniqa.nos.NoServico;
-import org.w3c.dom.Node;
-
 import java.io.*;
 
 public class EscritorCsv {
 
-public static void adicionarNoCsv(Object elemento, String caminhoArquivo,String cabecalho){
-
-    //cria um objeto da classe File com o caminho do arquivo csv
-    File arquivo = new File(caminhoArquivo);
-
-    if (!verificarPasta(arquivo)){
-        return;
-    }
-
-    //se o arquivo não existe ou não tem linhas retorna true
-    boolean precisaCabecalho = !arquivo.exists() || arquivo.length() == 0;
-
-    try(FileWriter escritor = new FileWriter(caminhoArquivo,true); PrintWriter pw = new PrintWriter(escritor)) {
-
-        //se o arquivo não existia ou for vazio cria o cabecalho
-        if (precisaCabecalho){
-            pw.println(cabecalho);
-        }
-
-        //adiciona a linha no arquivo csv com toString interno
-        pw.println(elemento);
-    }
-    catch (IOException e){
-
-        System.err.println("Erro ao adcionar : " + e.getMessage());
-    }
-}
-
-
-private static boolean verificarPasta(File arquivo){
-    File pasta = arquivo.getParentFile();
-
-    //verifica se a pasta já existe e se não, cria
-    if(pasta != null && !pasta.exists()){
-        boolean criada = pasta.mkdirs();
-        if (!criada){
-            System.out.println("Erro ao criar pasta");
-            return false;
+    public static void exportar(String nomeArquivo){
+        switch (nomeArquivo){
+            case "Clientes" -> atualizarDinamicoCsv(Cliente.head,"./dados/Clientes.csv","Código; Nome; Telefone; Email");
+            case "Carros" -> atualizarDinamicoCsv(Carro.inicio,"./dados/Carros.csv","Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;");
+            case "Pecas" -> atualizarEstaticoCsv(Gerenciador.pecas,"./dados/Pecas.csv","Código; Nome; Fabricante; Preço de custo; Preço de venda; Quantidade");
+            case "Servicos" -> atualizarEstaticoCsv(Gerenciador.servicos,"./dados/Servicos.csv","Código; Descrição; Tempo (minutos); Valor");
         }
     }
-    return true;
-}
 
-public static void atualizarEstaticoCsv(Object[] lista, String caminhoArquivo, String cabecalho){
+    private static boolean verificarPasta(File arquivo){
+        File pasta = arquivo.getParentFile();
 
-    if (lista.length == 0){
-        System.out.println("Lista vazia");
-        return;
-    }
-
-    try(FileWriter escritor = new FileWriter(caminhoArquivo,false); PrintWriter pw = new PrintWriter(escritor)){
-
-        escritor.write('\uFEFF');
-        pw.println(cabecalho);
-
-        for (Object elemento : lista){
-            if (elemento != null){
-                //adiciona a linha no arquivo csv com toString interno
-                pw.println(elemento);
+        //verifica se a pasta já existe e se não, cria
+        if(pasta != null && !pasta.exists()){
+            boolean criada = pasta.mkdirs();
+            if (!criada){
+                System.out.println("Erro ao criar pasta");
+                return false;
             }
         }
+        return true;
     }
-    catch (IOException e){
 
-        System.err.println("Erro ao atualizar : " + e.getMessage());
-    }
-}
+    public static void atualizarEstaticoCsv(Object[] lista, String caminhoArquivo, String cabecalho){
 
-    public static <T extends No<T>> void atualizarDinamicoCsv(T inicio, String caminhoArquivo, String cabecalho){
+        if (lista.length == 0){
+            System.out.println("Lista vazia");
+            return;
+        }
 
-            //evita o NullPointerException
-            if (inicio == null){
-                System.out.println("Lista vazia");
-                return;
-            }
+        File arquivo = new File(caminhoArquivo);
+        if (!verificarPasta(arquivo)) return;
 
-            try(FileWriter escritor = new FileWriter(caminhoArquivo,false); PrintWriter pw = new PrintWriter(escritor)){
+        try(FileWriter escritor = new FileWriter(caminhoArquivo,false); PrintWriter pw = new PrintWriter(escritor)){
 
-                escritor.write('\uFEFF');
+            escritor.write('\uFEFF');
             pw.println(cabecalho);
 
-            T head = inicio;
+            for (Object elemento : lista){
+                if (elemento != null){
+                    //adiciona a linha no arquivo csv com toString interno
+                    pw.println(elemento);
+                }
+            }
+        }
+        catch (IOException e){
+            System.err.println("Erro ao atualizar : " + e.getMessage());
+        }
+    }
 
-            while(head.getProximo() != null){
+    public static <T extends No<T>> void atualizarDinamicoCsv(No<T> inicio, String caminhoArquivo, String cabecalho){
+
+        //evita o NullPointerException
+        if (inicio == null){
+            System.out.println("Lista vazia");
+            return;
+        }
+        File arquivo = new File(caminhoArquivo);
+        if (!verificarPasta(arquivo)) return;
+
+        try(FileWriter escritor = new FileWriter(caminhoArquivo,false); PrintWriter pw = new PrintWriter(escritor)){
+
+            escritor.write('\uFEFF');
+            pw.println(cabecalho);
+
+            No<T> head = inicio;
+
+            while(head != null){
                 //adiciona a linha no arquivo csv com toString interno
                 pw.println(head.getValue());
                 head = head.getProximo();
             }
-                pw.println(head.getValue());
         }
         catch (IOException e){
-
             System.err.println("Erro ao atualizar : " + e.getMessage());
         }
     }

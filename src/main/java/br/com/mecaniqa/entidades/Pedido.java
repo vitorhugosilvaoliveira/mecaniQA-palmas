@@ -128,7 +128,7 @@ public class Pedido {
     private void validarPedidoAberto() {
         if (fechado) {
             throw new IllegalStateException(
-                    "Não é possível alterar um pedido fechado."
+                    "Nao e possivel alterar um pedido fechado."
             );
         }
     }

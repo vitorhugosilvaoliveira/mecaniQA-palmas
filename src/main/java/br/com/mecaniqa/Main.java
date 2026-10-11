@@ -1,61 +1,13 @@
 package br.com.mecaniqa;
 
 import br.com.mecaniqa.csv.EscritorCsv;
-import br.com.mecaniqa.entidades.*;
-import br.com.mecaniqa.enums.Categoria;
-import br.com.mecaniqa.enums.ChaveOrdenacao;
-import br.com.mecaniqa.enums.Status;
+import br.com.mecaniqa.csv.LeitorCsv;
 
 public class Main {
 
     public static void main(String[] args) {
-
+        LeitorCsv.importar("Pecas");
+        EscritorCsv.exportar("Pecas");
     }
-
-    //metodos para exportar as listas para o csv
-    private static void exportarPecaCsv(){
-
-        final String arquivo = "./dados/Pecas.csv";
-        final String cabecalho = "Código; Nome; Fabricante; Preço de custo; Preço de venda; Quantidade";
-
-        EscritorCsv.atualizarEstaticoCsv(Gerenciador.pecas,arquivo,cabecalho);
-    }
-
-    private static void exportarServicoCsv(){
-        final String arquivo = "./dados/Servicos.csv";
-        final String cabecalho = "Código; Descrição; Tempo (minutos); Valor";
-
-        EscritorCsv.atualizarEstaticoCsv(Gerenciador.servicos,arquivo,cabecalho);
-    }
-
-    private static void exportarClienteCsv(){
-        final String arquivo = "./dados/Clientes.csv";
-        final String cabecalho = "Código; Nome; Telefone; Email";
-
-        EscritorCsv.atualizarDinamicoCsv(Cliente.head,arquivo,cabecalho);
-    }
-
-    private static void exportarOsCsv(){
-        final String arquivo = "./dados/Ordens de servico.csv";
-        final String cabecalho = "Código; Status; Total de servicos";
-
-        EscritorCsv.atualizarDinamicoCsv(OrdemServico.inicio,arquivo,cabecalho);
-    }
-
-    private static void exportarCarroCsv(){
-        final String arquivo = "./dados/Carros.csv";
-        final String cabecalho = "Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;";
-
-        EscritorCsv.atualizarDinamicoCsv(Carro.inicio,arquivo,cabecalho);
-    }
-
-    private static void exportarPedidoCsv(){
-
-        final String arquivo = "./dados/Pedidos.csv";
-        final String cabecalho = "Código; Quantidade de itens; Status (fechado)";
-
-        EscritorCsv.atualizarDinamicoCsv(Pedido.head,arquivo,cabecalho);
-    }
-
 }
 

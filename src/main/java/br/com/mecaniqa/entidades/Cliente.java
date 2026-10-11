@@ -1,8 +1,9 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.interfaces.Entidade;
 import br.com.mecaniqa.nos.NoCliente;
 
-public class Cliente {
+public class Cliente implements Entidade<Cliente> {
     private static int contadorID = 1;
     public final int codigo;
     public String nome;
@@ -46,5 +47,10 @@ public class Cliente {
             }
             atual.next = novoNo;
         }
+    }
+
+    @Override
+    public int getCodigo() {
+        return this.codigo;
     }
 }
