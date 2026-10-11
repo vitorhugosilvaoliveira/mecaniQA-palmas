@@ -1,31 +1,31 @@
-CÛdigo	 Nome	 Fabricante	 PreÁo de custo	 PreÁo de venda	 Quantidade
-1	Embreagem Kit	LUK	450.0	780.0	10
-2	Pastilha de Freio	Fras-le	80.0	140.0	30
-3	PivÙ de Suspens„o	Viemar	50.0	95.0	32
-4	Filtro de ”leo	Tecfil	25.0	45.0	50
-5	L‚mpada H7	Philips	18.0	35.0	80
-6	Amortecedor Dianteiro	Monroe	250.0	420.0	12
-7	Alternador	Valeo	520.0	890.0	5
-8	Bomba d'¡gua	Urba	110.0	195.0	18
-9	Filtro de Ar	Mann Filter	30.0	55.0	40
-10	”leo de Motor 5W30	Castrol	32.0	60.0	120
-11	Bateria 60Ah	Moura	320.0	520.0	15
-12	Lanterna Traseira	Fitam	140.0	240.0	10
-13	Disco de Freio	Fremax	120.0	210.0	20
-14	Pneu 175/65 R14	Pirelli	260.0	410.0	40
-15	Cabo de IgniÁ„o	Bosch	60.0	110.0	25
-16	Bomba de CombustÌvel	Delphi	190.0	330.0	15
-17	Correia Dentada	Dayco	45.0	85.0	35
-18	Bieleta Dianteira	Axios	35.0	70.0	40
-19	Termostato	MTE-Thomson	40.0	75.0	28
-20	Vela de IgniÁ„o	NGK	15.0	32.0	100
-21	Palheta do Limpador	Dyna	22.0	45.0	60
-22	Tensor da Correia	SKF	70.0	130.0	22
-23	Motor de Arranque	Bosch	480.0	820.0	7
-24	Amortecedor Traseiro	Cofap	210.0	360.0	14
-25	Pneu 205/55 R16	Michelin	380.0	600.0	24
-26	HomocinÈtica	Nakata	130.0	230.0	16
-27	Radiador	Visconde	280.0	480.0	8
-28	Farol Dianteiro	Arteb	310.0	530.0	6
-29	Sensor MAP	Magneti Marelli	85.0	155.0	20
-30	Junta do CabeÁote	Sabo	55.0	105.0	30
+C√≥digo;Nome;Fabricante;Pre√ßo de custo;Pre√ßo de venda;Quantidade
+15;Embreagem Kit;LUK;450.0;780.0;10
+3;Pastilha de Freio;Fras-le;80.0;140.0;30
+28;Piv√¥ de Suspens√£o;Viemar;50.0;95.0;32
+1;Filtro de √ìleo;Tecfil;25.0;45.0;50
+19;L√¢mpada H7;Philips;18.0;35.0;80
+7;Amortecedor Dianteiro;Monroe;250.0;420.0;12
+25;Alternador;Valeo;520.0;890.0;5
+12;Bomba d'√Ågua;Urba;110.0;195.0;18
+2;Filtro de Ar;Mann Filter;30.0;55.0;40
+30;√ìleo de Motor 5W30;Castrol;32.0;60.0;120
+9;Bateria 60Ah;Moura;320.0;520.0;15
+21;Lanterna Traseira;Fitam;140.0;240.0;10
+4;Disco de Freio;Fremax;120.0;210.0;20
+17;Pneu 175/65 R14;Pirelli;260.0;410.0;40
+6;Cabo de Igni√ß√£o;Bosch;60.0;110.0;25
+23;Bomba de Combust√≠vel;Delphi;190.0;330.0;15
+10;Correia Dentada;Dayco;45.0;85.0;35
+29;Bieleta Dianteira;Axios;35.0;70.0;40
+14;Termostato;MTE-Thomson;40.0;75.0;28
+5;Vela de Igni√ß√£o;NGK;15.0;32.0;100
+22;Palheta do Limpador;Dyna;22.0;45.0;60
+11;Tensor da Correia;SKF;70.0;130.0;22
+26;Motor de Arranque;Bosch;480.0;820.0;7
+8;Amortecedor Traseiro;Cofap;210.0;360.0;14
+18;Pneu 205/55 R16;Michelin;380.0;600.0;24
+27;Homocin√©tica;Nakata;130.0;230.0;16
+13;Radiador;Visconde;280.0;480.0;8
+20;Farol Dianteiro;Arteb;310.0;530.0;6
+24;Sensor MAP;Magneti Marelli;85.0;155.0;20
+16;Junta do Cabe√ßote;Sabo;55.0;105.0;30
