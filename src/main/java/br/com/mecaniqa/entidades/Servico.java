@@ -4,7 +4,7 @@ import br.com.mecaniqa.csv.EscritorCsv;
 
 public class Servico{
     public static int contadorId = 1;
-    public int codigo;
+    public final int codigo;
     public String descricao;
     public int tempoMinutos;
     public double valor;

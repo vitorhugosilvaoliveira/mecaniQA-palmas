@@ -31,7 +31,7 @@ public class OrdemServico {
         return this.codigo + ";" + this.statusOrdeServico + ";" + this.totalServico;
     }
 
-    public void appendServico(Servico servico) {
+    private void appendServico(Servico servico) {
         NoServico novoNo = new NoServico(servico);
         if (head == null) {
             head = novoNo;

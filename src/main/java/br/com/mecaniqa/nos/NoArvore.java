@@ -4,7 +4,7 @@ import br.com.mecaniqa.interfaces.Entidade;
 public class NoArvore <T extends Entidade<T>> {
     public T registro;
     public int id;
-    public int altura;
+    public int altura = 1;
     public NoArvore<T> esquerda;
     public NoArvore<T> direita;
 
