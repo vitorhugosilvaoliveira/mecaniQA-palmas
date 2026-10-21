@@ -1,10 +1,13 @@
 package br.com.mecaniqa.entidades;
 
 import br.com.mecaniqa.enums.Categoria;
+import br.com.mecaniqa.interfaces.Entidade;
 import br.com.mecaniqa.nos.NoCarro;
 import br.com.mecaniqa.nos.NoPlaca;
 
-public class Carro {
+public class Carro implements Entidade<Carro> {
+    private static int contador;
+    public final int codigo;
     public String modelo;
     public String placa;
     public int ano;
@@ -14,11 +17,14 @@ public class Carro {
     public static NoPlaca head = null;
     public static NoCarro inicio = null;
 
+    public static GerenciadorArvore<Carro> arvoreCarro = new GerenciadorArvore<>();
+
     public Carro(String modelo, String placa, int ano, String estiloCarroceria, Categoria categoria, int codigoDono){
 
-        if (placaExiste(placa))
+        if (placaExiste(placa)) {
             throw new IllegalArgumentException("Esta placa já foi cadastrada no sistema");
-
+        }
+        this.codigo = contador++;
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;
@@ -27,7 +33,7 @@ public class Carro {
         this.codigoDono = codigoDono;
 
         cadastrarPlaca(this.placa);
-        appendCarro(this);
+        this.arvoreCarro.inserir(this);
     }
 
     public String toString() {
@@ -86,5 +92,10 @@ public class Carro {
             }
             atual.next = novoNo;
         }
+    }
+
+    @Override
+    public int getCodigo() {
+        return this.codigo;
     }
 }

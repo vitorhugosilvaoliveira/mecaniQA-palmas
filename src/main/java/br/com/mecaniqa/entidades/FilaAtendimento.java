@@ -34,7 +34,7 @@ public class FilaAtendimento {
         }
 
         this.tamanho--;
-        return emAtendimento;
+        return emAtendimento; //precisa criar uma entidade para executar o serviço e finalizar.
     }
 
     public boolean estaVazia() {//verifica o a fila está vazia

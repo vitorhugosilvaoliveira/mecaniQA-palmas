@@ -207,4 +207,5 @@ public class ArvoreAVL<T extends Entidade<T>> implements Arvore<T> {
             return find(codigo, atual.direita);
         }
     }
+
 }
