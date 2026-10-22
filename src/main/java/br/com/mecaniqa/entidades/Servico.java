@@ -1,7 +1,5 @@
 package br.com.mecaniqa.entidades;
 
-import br.com.mecaniqa.csv.EscritorCsv;
-
 public class Servico{
     public static int contadorId = 1;
     public final int codigo;

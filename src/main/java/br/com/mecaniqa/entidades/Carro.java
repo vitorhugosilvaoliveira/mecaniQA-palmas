@@ -2,11 +2,10 @@ package br.com.mecaniqa.entidades;
 
 import br.com.mecaniqa.enums.Categoria;
 import br.com.mecaniqa.interfaces.Entidade;
-import br.com.mecaniqa.nos.NoCarro;
 import br.com.mecaniqa.nos.NoPlaca;
 
 public class Carro implements Entidade<Carro> {
-    private static int contador;
+    private static int contador = 1;
     public final int codigo;
     public String modelo;
     public String placa;
@@ -15,7 +14,6 @@ public class Carro implements Entidade<Carro> {
     public Categoria categoria;
     public final int codigoDono;
     public static NoPlaca head = null;
-    public static NoCarro inicio = null;
 
     public static GerenciadorArvore<Carro> arvoreCarro = new GerenciadorArvore<>();
 
@@ -33,11 +31,11 @@ public class Carro implements Entidade<Carro> {
         this.codigoDono = codigoDono;
 
         cadastrarPlaca(this.placa);
-        this.arvoreCarro.inserir(this);
+        arvoreCarro.inserir(this);
     }
 
     public String toString() {
-        return tratarAtributo(this.modelo) + ";" + tratarAtributo(this.placa) + ";" + this.ano + ";" + tratarAtributo(this.estiloCarroceria) + ";" + this.categoria + ";" + this.codigoDono;
+        return this.codigo + ";" + tratarAtributo(this.modelo) + ";" + tratarAtributo(this.placa) + ";" + this.ano + ";" + tratarAtributo(this.estiloCarroceria) + ";" + this.categoria + ";" + this.codigoDono;
     }
     //metodo interno para ajustar o String e evitar que quebre o arquivo csv
     private String tratarAtributo(String atributo){
@@ -77,20 +75,6 @@ public class Carro implements Entidade<Carro> {
                 atual = atual.next;
             }
             atual.next = novaPlaca;
-        }
-    }
-    private void appendCarro(Carro value){
-
-        NoCarro novoNo = new NoCarro(value);
-
-        if (inicio == null){
-            inicio = novoNo;
-        }else {
-            NoCarro atual = inicio;
-            while(atual.next != null){
-                atual = atual.next;
-            }
-            atual.next = novoNo;
         }
     }
 
