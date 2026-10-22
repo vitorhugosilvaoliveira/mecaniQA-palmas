@@ -3,15 +3,17 @@ package br.com.mecaniqa.csv;
 import br.com.mecaniqa.entidades.Carro;
 import br.com.mecaniqa.entidades.Cliente;
 import br.com.mecaniqa.entidades.Gerenciador;
-import br.com.mecaniqa.interfaces.No;
+import br.com.mecaniqa.interfaces.Entidade;
+import br.com.mecaniqa.nos.NoArvore;
+
 import java.io.*;
 
 public class EscritorCsv {
 
     public static void exportar(String nomeArquivo){
         switch (nomeArquivo){
-            case "Clientes" -> atualizarDinamicoCsv(Cliente.head,"./dados/Clientes.csv","Código; Nome; Telefone; Email");
-            case "Carros" -> atualizarDinamicoCsv(Carro.inicio,"./dados/Carros.csv","Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;");
+            //case "Clientes" -> atualizarDinamicoCsv(Cliente.head,"./dados/Clientes.csv","Código; Nome; Telefone; Email");
+            case "Carros" -> atualizarDinamicoCsv(Carro.arvoreCarro.arvoreAvl.raiz,"./dados/Carros.csv","Código; Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário;");
             case "Pecas" -> atualizarEstaticoCsv(Gerenciador.pecas,"./dados/Pecas.csv","Código; Nome; Fabricante; Preço de custo; Preço de venda; Quantidade");
             case "Servicos" -> atualizarEstaticoCsv(Gerenciador.servicos,"./dados/Servicos.csv","Código; Descrição; Tempo (minutos); Valor");
         }
@@ -58,7 +60,7 @@ public class EscritorCsv {
         }
     }
 
-    public static <T extends No<T>> void atualizarDinamicoCsv(No<T> inicio, String caminhoArquivo, String cabecalho){
+    public static <T extends Entidade<T>> void atualizarDinamicoCsv(NoArvore<T> inicio, String caminhoArquivo, String cabecalho){
 
         //evita o NullPointerException
         if (inicio == null){
@@ -72,17 +74,19 @@ public class EscritorCsv {
 
             escritor.write('\uFEFF');
             pw.println(cabecalho);
-
-            No<T> head = inicio;
-
-            while(head != null){
-                //adiciona a linha no arquivo csv com toString interno
-                pw.println(head.getValue());
-                head = head.getProximo();
-            }
+            //adiciona a linha no arquivo csv com toString interno
+            escreverEmOrdem(inicio,pw);
         }
         catch (IOException e){
             System.err.println("Erro ao atualizar : " + e.getMessage());
+        }
+    }
+
+    private static<T extends Entidade<T>> void escreverEmOrdem(NoArvore<T> raiz, PrintWriter pw){
+        if (raiz != null){
+            escreverEmOrdem(raiz.esquerda,pw);
+            pw.println(raiz.registro);
+            escreverEmOrdem(raiz.direita,pw);
         }
     }
 }

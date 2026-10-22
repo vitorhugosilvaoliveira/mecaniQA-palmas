@@ -5,7 +5,7 @@ import br.com.mecaniqa.nos.NoArvore;
 
 public class GerenciadorArvore<T extends Entidade<T> > {
 
-    private ArvoreAVL<T> arvoreAvl;
+    public ArvoreAVL<T> arvoreAvl;
 
     public GerenciadorArvore() {
         this.arvoreAvl = new ArvoreAVL<>();
