@@ -1,5 +1,6 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.csv.TratarAtributo;
 import br.com.mecaniqa.interfaces.Entidade;
 
 public class Peca implements Entidade<Peca> {
@@ -13,6 +14,10 @@ public class Peca implements Entidade<Peca> {
 
     public static GerenciadorArvore<Peca> arvorePeca = new GerenciadorArvore<>();
 
+    static {
+        br.com.mecaniqa.csv.LeitorCsv.importar("Pecas");
+    }
+
     public Peca(String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
         this.codigo = contadorId++;
         this.nomePeca = nomePeca;
@@ -22,20 +27,32 @@ public class Peca implements Entidade<Peca> {
         this.quantidade = quantidade;
 
         arvorePeca.inserir(this);
+        br.com.mecaniqa.csv.EscritorCsv.adicionarObjetoCsv(
+                this,
+                "./dados/Pecas.csv",
+                "Codigo; Nome da peça; Nome do Fabricante; Preço de custo; preço de venda; Quantidade"
+        );
+    }
+    public Peca(int codigo, String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
+        this.codigo = codigo;
+        this.nomePeca = nomePeca;
+        this.nomeFabricante = nomeFabricante;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+        this.quantidade = quantidade;
+
+        arvorePeca.inserir(this);
+        if(codigo >= contadorId){
+            contadorId = codigo + 1;
+        }
     }
 
     public String toString() {
-        return this.codigo + ";" + tratarAtributo(this.nomePeca) + ";" + tratarAtributo(this.nomeFabricante) + ";" + this.precoCusto + ";" + this.precoVenda + ";" + this.quantidade;
-    }
-    //metodo interno para ajustar o String e evitar que quebre o arquivo csv
-    private String tratarAtributo(String atributo){
-        if (atributo == null)
-            return "";
-        if (atributo.contains(";") || atributo.contains("\"") || atributo.contains("\n")){
-            atributo = atributo.replace("\"", "\"\"");
-            return "\"" + atributo + "\"";
-        }
-        return atributo;
+        return this.codigo +
+                ";" + TratarAtributo.atributo(this.nomePeca) +
+                ";" + TratarAtributo.atributo(this.nomeFabricante) +
+                ";" + this.precoCusto + ";" + this.precoVenda +
+                ";" + this.quantidade;
     }
 
     @Override

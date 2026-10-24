@@ -1,6 +1,5 @@
 package br.com.mecaniqa.entidades;
 
-import br.com.mecaniqa.csv.EscritorCsv;
 import br.com.mecaniqa.interfaces.Entidade;
 import br.com.mecaniqa.nos.NoOrdemServico;
 import br.com.mecaniqa.nos.NoServico;
@@ -13,9 +12,12 @@ public class OrdemServico implements Entidade<OrdemServico> {
     public Servico servico;
     public int totalServico;
     public NoServico head = null;
-    public static NoOrdemServico inicio = null;
 
     public static GerenciadorArvore<OrdemServico> gerenciarOrdemServico = new GerenciadorArvore<>();
+
+    static{
+            br.com.mecaniqa.csv.LeitorCsv.importar("OrdemServico");
+    }
 
     public OrdemServico(Status tipoOrdeServico, Servico servico) {
         if(tipoOrdeServico == Status.FINALIZADO) {
@@ -25,41 +27,31 @@ public class OrdemServico implements Entidade<OrdemServico> {
         this.statusOrdeServico = tipoOrdeServico;
         this.servico = servico;
         if (servico != null) {
-            appendServico(servico);
-            appendOs(this);
             gerenciarOrdemServico.inserir(this );
+        }
+        br.com.mecaniqa.csv.EscritorCsv.adicionarObjetoCsv(
+                this,
+                "./dados/OrdemServico.csv",
+                "Codigo; Tipo de serviço; ID do servico;");
+    }
+    public OrdemServico(int codigo, Status tipoOrdeServico, Servico servico) {
+        if(tipoOrdeServico == Status.FINALIZADO) {
+            throw new IllegalArgumentException("Não é possível criar uma ordem de serviço com estado FINALIZADO.");
+        }
+        this.codigo = codigo;
+        this.statusOrdeServico = tipoOrdeServico;
+        this.servico = servico;
+        if (servico != null) {
+            gerenciarOrdemServico.inserir(this );
+        }
+
+        if(codigo >= contadorId){
+            contadorId = codigo + 1;
         }
     }
 
     public String toString() {
         return this.codigo + ";" + this.statusOrdeServico + ";" + this.totalServico;
-    }
-
-    private void appendServico(Servico servico) {
-        NoServico novoNo = new NoServico(servico);
-        if (head == null) {
-            head = novoNo;
-        } else {
-            NoServico aux = head;
-            while (aux.next != null) {
-                aux = aux.next;
-            }
-            aux.next = novoNo;
-        }
-        this.totalServico++;
-    }
-
-    public void appendOs(OrdemServico os) {
-        NoOrdemServico novoNo = new NoOrdemServico(os);
-        if (inicio == null) {
-            inicio = novoNo;
-        } else {
-            NoOrdemServico aux = inicio;
-            while (aux.next != null){
-                aux = aux.next;
-            }
-            aux.next = novoNo;
-        }
     }
 
     public static int quantidadeServico(OrdemServico ordem) {

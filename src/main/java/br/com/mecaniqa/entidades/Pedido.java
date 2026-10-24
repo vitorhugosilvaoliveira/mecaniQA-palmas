@@ -1,5 +1,6 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.csv.TratarAtributo;
 import br.com.mecaniqa.interfaces.Entidade;
 
 /**
@@ -28,17 +29,7 @@ public class Pedido implements Entidade<Pedido> {
     }
 
     public String toString() {
-        return this.codigo + ";" + this.quantidadeItens + ";" + tratarAtributo(String.valueOf(this.fechado));
-    }
-    //metodo interno para ajustar o String e evitar que quebre o arquivo csv
-    private String tratarAtributo(String atributo){
-        if (atributo == null)
-            return "";
-        if (atributo.contains(";") || atributo.contains("\"") || atributo.contains("\n")){
-            atributo = atributo.replace("\"", "\"\"");
-            return "\"" + atributo + "\"";
-        }
-        return atributo;
+        return this.codigo + ";" + this.quantidadeItens + ";" + TratarAtributo.atributo(String.valueOf(this.fechado));
     }
 
     public void adicionarItem(Peca peca, int quantidade) {
