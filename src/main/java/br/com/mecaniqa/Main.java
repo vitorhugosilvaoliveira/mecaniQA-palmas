@@ -9,19 +9,17 @@ import br.com.mecaniqa.enums.Status;
 public class Main {
 
     public static void main(String[] args) {
-        LeitorCsv.importar("Carros");
-        Carro.arvoreCarro.exibirOrdem();
-        EscritorCsv.exportar("Carros");
+
 
         System.out.println("------------------------------------------------------------------");
 
         Cliente cliente1 = new Cliente("matheus","759681316","ansdjbakdb@gmail.com");
-        Cliente cliente2 = new Cliente("felas","70351651316","15135asdas@gmail.com");
-        Cliente cliente3 = new Cliente("bichodoido","721513316","aksdhsvajabs@gmail.com");
+        Cliente cliente2 = new Cliente("felas","7035165131","15135asdas@gmail.com");
+        Cliente cliente3 = new Cliente("joão","721513316","aksasdasdaajabs@gmail.com");
 
         Cliente.arvoreCliente.exibirOrdem();
 
-        System.out.println("------------------------------------------------------------------");
+        /*System.out.println("------------------------------------------------------------------");
 
         Carro carro1  = new Carro("fiat","las5s68",2023,"asnf,b", Categoria.SEDAN,1);
         Carro carro2  = new Carro("BMW","asdasda",2028,"san", Categoria.SEDAN,2);
@@ -51,6 +49,6 @@ public class Main {
         Pedido p = new Pedido();
         p.adicionarItem(Peca.arvorePeca.encontrar(1), 2);
         Pedido.arvorePedido.exibirOrdem();
-        System.out.println(p.calcularValorTotal());
+        System.out.println(p.calcularValorTotal());*/
     }
 }
