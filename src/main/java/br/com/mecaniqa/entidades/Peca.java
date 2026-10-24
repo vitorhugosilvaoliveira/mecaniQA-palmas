@@ -1,6 +1,8 @@
 package br.com.mecaniqa.entidades;
 
-public class Peca {
+import br.com.mecaniqa.interfaces.Entidade;
+
+public class Peca implements Entidade<Peca> {
     public static int contadorId = 1;
     public int codigo;
     public String nomePeca;
@@ -9,6 +11,8 @@ public class Peca {
     public double precoVenda;
     public int quantidade;
 
+    public static GerenciadorArvore<Peca> arvorePeca = new GerenciadorArvore<>();
+
     public Peca(String nomePeca, String nomeFabricante, double precoCusto, double precoVenda, int quantidade) {
         this.codigo = contadorId++;
         this.nomePeca = nomePeca;
@@ -16,6 +20,8 @@ public class Peca {
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
         this.quantidade = quantidade;
+
+        arvorePeca.inserir(this);
     }
 
     public String toString() {
@@ -30,5 +36,10 @@ public class Peca {
             return "\"" + atributo + "\"";
         }
         return atributo;
+    }
+
+    @Override
+    public int getCodigo() {
+        return this.codigo;
     }
 }

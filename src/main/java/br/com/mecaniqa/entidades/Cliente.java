@@ -1,7 +1,6 @@
 package br.com.mecaniqa.entidades;
 
 import br.com.mecaniqa.interfaces.Entidade;
-import br.com.mecaniqa.nos.NoCliente;
 
 public class Cliente implements Entidade<Cliente> {
     private static int contadorID = 1;
@@ -9,9 +8,8 @@ public class Cliente implements Entidade<Cliente> {
     public String nome;
     public String telefone;
     public String email;
-    public static NoCliente head = null;
 
-    public static GerenciadorArvore<Cliente> inserirCliente= new GerenciadorArvore();
+    public static GerenciadorArvore<Cliente> arvoreCliente = new GerenciadorArvore<>();
 
     public Cliente(String nome, String telefone, String email){
         this.codigo = contadorID++;
@@ -19,7 +17,7 @@ public class Cliente implements Entidade<Cliente> {
         this.telefone = telefone;
         this.email = email;
 
-        inserirCliente.inserir(this);
+        arvoreCliente.inserir(this);
     }
 
     public String toString() {
@@ -34,21 +32,6 @@ public class Cliente implements Entidade<Cliente> {
             return "\"" + atributo + "\"";
         }
         return atributo;
-    }
-
-    private void appendCliente(Cliente value){
-
-        NoCliente novoNo = new NoCliente(value);
-
-        if (head == null){
-            head = novoNo;
-        }else {
-            NoCliente atual = head;
-            while(atual.next != null){
-                atual = atual.next;
-            }
-            atual.next = novoNo;
-        }
     }
 
     @Override

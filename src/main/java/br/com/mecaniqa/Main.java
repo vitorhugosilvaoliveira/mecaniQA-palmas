@@ -19,7 +19,7 @@ public class Main {
         Cliente cliente2 = new Cliente("felas","70351651316","15135asdas@gmail.com");
         Cliente cliente3 = new Cliente("bichodoido","721513316","aksdhsvajabs@gmail.com");
 
-        Cliente.inserirCliente.exibirOrdem();
+        Cliente.arvoreCliente.exibirOrdem();
 
         System.out.println("------------------------------------------------------------------");
 
@@ -44,5 +44,13 @@ public class Main {
         OrdemServico OS3 = new OrdemServico(Status.EM_EXECUCAO, serv3);
 
         OrdemServico.gerenciarOrdemServico.exibirOrdem();
+
+        LeitorCsv.importar("Pecas");
+        Peca.arvorePeca.exibirOrdem();
+
+        Pedido p = new Pedido();
+        p.adicionarItem(Peca.arvorePeca.encontrar(1), 2);
+        Pedido.arvorePedido.exibirOrdem();
+        System.out.println(p.calcularValorTotal());
     }
 }
