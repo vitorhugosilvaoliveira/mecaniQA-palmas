@@ -1,12 +1,12 @@
 package br.com.mecaniqa.entidades;
 
-import br.com.mecaniqa.nos.NoOrdemServico;
-import br.com.mecaniqa.nos.NoPedido;
+import br.com.mecaniqa.interfaces.Entidade;
 
 /**
- * Pedido implementado com uma lista simplesmente encadeada manual.
+ * Pedido com os itens em uma lista simplesmente encadeada manual.
+ * Os pedidos cadastrados ficam guardados em uma árvore AVL.
  */
-public class Pedido {
+public class Pedido implements Entidade<Pedido> {
     private static int contadorId = 1;
 
     public final int codigo;
@@ -14,7 +14,8 @@ public class Pedido {
     private ItemPedido fim;
     private int quantidadeItens;
     private boolean fechado;
-    public static NoPedido head = null;
+
+    public static GerenciadorArvore<Pedido> arvorePedido = new GerenciadorArvore<>();
 
     public Pedido() {
         this.codigo = contadorId++;
@@ -22,7 +23,8 @@ public class Pedido {
         this.fim = null;
         this.quantidadeItens = 0;
         this.fechado = false;
-        appendPedido(this);
+
+        arvorePedido.inserir(this);
     }
 
     public String toString() {
@@ -53,19 +55,6 @@ public class Pedido {
         }
 
         quantidadeItens++;
-    }
-
-    public void appendPedido(Pedido pedido) {
-        NoPedido novoNo = new NoPedido(pedido);
-        if (head == null) {
-            head = novoNo;
-        } else {
-            NoPedido aux = head;
-            while (aux.next != null){
-                aux = aux.next;
-            }
-            aux.next = novoNo;
-        }
     }
 
     public boolean removerItem(int codigoPeca) {
@@ -123,6 +112,11 @@ public class Pedido {
 
     public ItemPedido getInicio() {
         return inicio;
+    }
+
+    @Override
+    public int getCodigo() {
+        return this.codigo;
     }
 
     private void validarPedidoAberto() {

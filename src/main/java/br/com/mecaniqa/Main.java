@@ -9,17 +9,15 @@ import br.com.mecaniqa.enums.Status;
 public class Main {
 
     public static void main(String[] args) {
-        LeitorCsv.importar("Carros");
-        Carro.arvoreCarro.exibirOrdem();
-        EscritorCsv.exportar("Carros");
+
 
         System.out.println("------------------------------------------------------------------");
 
         Cliente cliente1 = new Cliente("matheus","759681316","ansdjbakdb@gmail.com");
-        Cliente cliente2 = new Cliente("felas","70351651316","15135asdas@gmail.com");
-        Cliente cliente3 = new Cliente("bichodoido","721513316","aksdhsvajabs@gmail.com");
+        Cliente cliente2 = new Cliente("felas","7035165131","15135asdas@gmail.com");
+        Cliente cliente3 = new Cliente("joão","721513316","aksasdasdaajabs@gmail.com");
 
-        Cliente.inserirCliente.exibirOrdem();
+        Cliente.arvoreCliente.exibirOrdem();
 
         System.out.println("------------------------------------------------------------------");
 
@@ -29,7 +27,7 @@ public class Main {
 
         Carro.arvoreCarro.exibirOrdem();
 
-        System.out.println("------------------------------------------------------------------");
+        /*System.out.println("------------------------------------------------------------------");
 
         Servico serv1 = new Servico("realizar a troca do motor", 240,15000.00);
         Servico serv2 = new Servico("realizar a troca da pastilha de freio ",60 ,15000.00);
@@ -44,5 +42,13 @@ public class Main {
         OrdemServico OS3 = new OrdemServico(Status.EM_EXECUCAO, serv3);
 
         OrdemServico.gerenciarOrdemServico.exibirOrdem();
+
+        LeitorCsv.importar("Pecas");
+        Peca.arvorePeca.exibirOrdem();
+
+        Pedido p = new Pedido();
+        p.adicionarItem(Peca.arvorePeca.encontrar(1), 2);
+        Pedido.arvorePedido.exibirOrdem();
+        System.out.println(p.calcularValorTotal());*/
     }
 }

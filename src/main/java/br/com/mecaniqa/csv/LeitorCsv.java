@@ -25,8 +25,8 @@ public class LeitorCsv {
                switch (arquivo){
                    case "./dados/Pecas.csv" -> Gerenciador.inserirPeca(new Peca(atributos[1],atributos[2],Double.parseDouble(atributos[3]),Double.parseDouble(atributos[4]),Integer.parseInt(atributos[5])));
                    case "./dados/Servicos.csv" -> Gerenciador.inserirServico(new Servico(atributos[1],Integer.parseInt(atributos[2]),Double.parseDouble(atributos[3])));
-                   case "./dados/Clientes.csv" -> new Cliente(atributos[1],atributos[2],atributos[3]);
-                   case "./dados/Carros.csv" -> new Carro(atributos[1],atributos[2],Integer.parseInt(atributos[3]),atributos[4], Categoria.valueOf(atributos[5]),Integer.parseInt(atributos[6]));
+                   case "./dados/Clientes.csv" -> new Cliente(Integer.parseInt(atributos[0]), atributos[1], atributos[2], atributos[3]);
+                   case "./dados/Carros.csv" -> new Carro(Integer.parseInt(atributos[0]), atributos[1],atributos[2],Integer.parseInt(atributos[3]),atributos[4], Categoria.valueOf(atributos[5]),Integer.parseInt(atributos[6]));
                }
            }
        }catch(FileNotFoundException e){

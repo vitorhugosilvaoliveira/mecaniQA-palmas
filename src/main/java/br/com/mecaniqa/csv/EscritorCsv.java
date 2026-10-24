@@ -89,4 +89,28 @@ public class EscritorCsv {
             escreverEmOrdem(raiz.direita,pw);
         }
     }
+
+    public static void adicionarObjetoCsv(Object elemento, String caminhoArquivo, String cabecalho) {
+        File arquivo = new File(caminhoArquivo);
+        // Verifica se o ficheiro é novo ou está vazio para saber se escreve o cabeçalho
+        boolean precisaCabecalho = !arquivo.exists() || arquivo.length() == 0;
+
+        if (!verificarPasta(arquivo)) return;
+
+        // O append: true garante que os dados antigos não sejam apagados
+        try(FileWriter escritor = new FileWriter(caminhoArquivo, true);
+            PrintWriter pw = new PrintWriter(escritor)){
+
+            if (precisaCabecalho) {
+                escritor.write('\uFEFF');
+                pw.println(cabecalho);
+            }
+
+            // Adiciona apenas o objeto novo
+            pw.println(elemento);
+
+        } catch (IOException e){
+            System.err.println("Erro ao adicionar linha : " + e.getMessage());
+        }
+    }
 }

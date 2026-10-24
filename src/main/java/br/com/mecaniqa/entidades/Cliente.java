@@ -11,7 +11,7 @@ public class Cliente implements Entidade<Cliente> {
     public String email;
     public static NoCliente head = null;
 
-    public static GerenciadorArvore<Cliente> inserirCliente= new GerenciadorArvore<>();
+    public static GerenciadorArvore<Cliente> inserirCliente= new GerenciadorArvore();
 
     public Cliente(String nome, String telefone, String email){
         this.codigo = contadorID++;

@@ -1,5 +1,6 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.csv.TratarAtributo;
 import br.com.mecaniqa.enums.Categoria;
 import br.com.mecaniqa.interfaces.Entidade;
 import br.com.mecaniqa.nos.NoPlaca;
@@ -17,6 +18,11 @@ public class Carro implements Entidade<Carro> {
 
     public static GerenciadorArvore<Carro> arvoreCarro = new GerenciadorArvore<>();
 
+    static {
+        // executa esse comando primeiro(uma unica vez) para verificar os clientes existentes e retornar o codigo a partir disso.
+        br.com.mecaniqa.csv.LeitorCsv.importar("Carros");
+    }
+
     public Carro(String modelo, String placa, int ano, String estiloCarroceria, Categoria categoria, int codigoDono){
 
         if (placaExiste(placa)) {
@@ -32,21 +38,37 @@ public class Carro implements Entidade<Carro> {
 
         cadastrarPlaca(this.placa);
         arvoreCarro.inserir(this);
+        br.com.mecaniqa.csv.EscritorCsv.adicionarObjetoCsv(
+                this,
+                "./dados/Carros.csv",
+                "Código; Modelo; Placa; Ano; Estilo carroceria; Categoria; Id do proprietário"
+        );
+    }
+    public Carro(int codigo, String modelo, String placa, int ano, String estiloCarroceria, Categoria categoria, int codigoDono){
+        this.codigo = codigo; // Usa o ID exato do arquivo
+        this.modelo = modelo;
+        this.placa = placa;
+        this.ano = ano;
+        this.estiloCarroceria = estiloCarroceria;
+        this.categoria = categoria;
+        this.codigoDono = codigoDono;
+
+        cadastrarPlaca(this.placa);
+        arvoreCarro.inserir(this);
+
+        // Atualiza o contador de IDs
+        if (codigo >= contador) {
+            contador = codigo + 1;
+        }
     }
 
     public String toString() {
-        return this.codigo + ";" + tratarAtributo(this.modelo) + ";" + tratarAtributo(this.placa) + ";" + this.ano + ";" + tratarAtributo(this.estiloCarroceria) + ";" + this.categoria + ";" + this.codigoDono;
-    }
-    //metodo interno para ajustar o String e evitar que quebre o arquivo csv
-    private String tratarAtributo(String atributo){
-
-        if (atributo == null)
-            return "";
-        if (atributo.contains(";") || atributo.contains("\"") || atributo.contains("\n")){
-            atributo = atributo.replace("\"", "\"\"");
-            return "\"" + atributo + "\"";
-        }
-        return atributo;
+        return this.codigo + ";" +
+                TratarAtributo.atributo(this.modelo) +
+                ";" + TratarAtributo.atributo(this.placa) +
+                ";" + this.ano +
+                ";" + TratarAtributo.atributo(this.estiloCarroceria) + "" +
+                ";" + this.categoria + ";" + this.codigoDono;
     }
 
     //metodo interno que verifica se a placa esta duplicada
