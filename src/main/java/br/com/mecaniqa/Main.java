@@ -19,7 +19,7 @@ public class Main {
 
         Cliente.arvoreCliente.exibirOrdem();
 
-        /*System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------");
 
         Carro carro1  = new Carro("fiat","las5s68",2023,"asnf,b", Categoria.SEDAN,1);
         Carro carro2  = new Carro("BMW","asdasda",2028,"san", Categoria.SEDAN,2);
@@ -27,7 +27,7 @@ public class Main {
 
         Carro.arvoreCarro.exibirOrdem();
 
-        System.out.println("------------------------------------------------------------------");
+        /*System.out.println("------------------------------------------------------------------");
 
         Servico serv1 = new Servico("realizar a troca do motor", 240,15000.00);
         Servico serv2 = new Servico("realizar a troca da pastilha de freio ",60 ,15000.00);
