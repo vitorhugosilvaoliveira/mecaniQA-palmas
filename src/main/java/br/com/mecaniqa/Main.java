@@ -4,10 +4,8 @@ import br.com.mecaniqa.csv.EscritorCsv;
 import br.com.mecaniqa.csv.LeitorCsv;
 import br.com.mecaniqa.entidades.Carro;
 import br.com.mecaniqa.entidades.Cliente;
-import br.com.mecaniqa.entidades.OrdemServico;
-import br.com.mecaniqa.entidades.Servico;
+import br.com.mecaniqa.entidades.GerenciadorArvore;
 import br.com.mecaniqa.enums.Categoria;
-import br.com.mecaniqa.enums.Status;
 
 public class Main {
 
@@ -19,7 +17,11 @@ public class Main {
        Cliente cliente2 = new Cliente("felas","70351651316","15135asdas@gmail.com");
        Cliente cliente3 = new Cliente("bichodoido","721513316","aksdhsvajabs@gmail.com");
 
-        Cliente.inserirCliente.exibirOrdem();
+        GerenciadorArvore<Cliente>  gerenciador = new GerenciadorArvore<>();
+        gerenciador.inserir(cliente1);
+        gerenciador.inserir(cliente2);
+        gerenciador.inserir(cliente3);
+        gerenciador.exibirOrdem();
 
         System.out.println("------------------------------------------------------------------");
 
@@ -28,20 +30,5 @@ public class Main {
         Carro carro3  = new Carro("Pegault","las5s6asf8",2020,"dan", Categoria.SEDAN,3);
 
         Carro.arvoreCarro.exibirOrdem();
-
-        Servico serv1 = new Servico("realizar a troca do motor", 240,15000.00);
-        Servico serv2 = new Servico("realizar a troca da pastilha de freio ",60 ,15000.00);
-        Servico serv3 = new Servico("realizar a troca do catalizador \"", 120,15000.00);
-
-
-
-        OrdemServico OS1 = new OrdemServico(Status.EM_ABERTO, serv1);
-        OrdemServico OS2 = new OrdemServico(Status.AGUARDANDO_EXECUCAO, serv2);
-        OrdemServico OS3 = new OrdemServico(Status.EM_EXECUCAO, serv3);
-
-        OrdemServico.gerenciarOrdemServico.exibirOrdem();
-
-
     }
 }
-
