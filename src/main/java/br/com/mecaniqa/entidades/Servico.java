@@ -1,17 +1,23 @@
 package br.com.mecaniqa.entidades;
 
-public class Servico{
+import br.com.mecaniqa.interfaces.Entidade;
+
+public class Servico implements Entidade<Servico> {
     public static int contadorId = 1;
     public final int codigo;
     public String descricao;
     public int tempoMinutos;
     public double valor;
 
+    public static GerenciadorArvore<Servico> arvoreServico = new GerenciadorArvore<>();
+
     public Servico(String descricao, int tempo, double valor){
         this.codigo = contadorId++;
         this.descricao = descricao;
         this.tempoMinutos = tempo;
         this.valor = valor;
+
+        arvoreServico.inserir(this);
     }
 
     public String toString() {
@@ -28,4 +34,7 @@ public class Servico{
         }
         return atributo;
     }
+
+    @Override
+    public int getCodigo() {return this.codigo;}
 }
