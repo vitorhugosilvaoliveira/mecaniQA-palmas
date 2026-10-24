@@ -1,11 +1,12 @@
 package br.com.mecaniqa.entidades;
 
 import br.com.mecaniqa.csv.EscritorCsv;
+import br.com.mecaniqa.interfaces.Entidade;
 import br.com.mecaniqa.nos.NoOrdemServico;
 import br.com.mecaniqa.nos.NoServico;
 import br.com.mecaniqa.enums.Status;
 
-public class OrdemServico {
+public class OrdemServico implements Entidade<OrdemServico> {
     public static int contadorId = 1;
     public final int codigo;
     public Status statusOrdeServico;
@@ -13,6 +14,8 @@ public class OrdemServico {
     public int totalServico;
     public NoServico head = null;
     public static NoOrdemServico inicio = null;
+
+    public static GerenciadorArvore<OrdemServico> gerenciarOrdemServico = new GerenciadorArvore<>();
 
     public OrdemServico(Status tipoOrdeServico, Servico servico) {
         if(tipoOrdeServico == Status.FINALIZADO) {
@@ -24,6 +27,7 @@ public class OrdemServico {
         if (servico != null) {
             appendServico(servico);
             appendOs(this);
+            gerenciarOrdemServico.inserir(this );
         }
     }
 
@@ -76,4 +80,6 @@ public class OrdemServico {
             }
         }
     }
+    @Override
+    public int getCodigo() {return this.codigo; }
 }

@@ -40,4 +40,7 @@ public class GerenciadorArvore<T extends Entidade<T> > {
 
         }
     }
+
+    public void exit() {
+    }
 }

@@ -11,13 +11,15 @@ public class Cliente implements Entidade<Cliente> {
     public String email;
     public static NoCliente head = null;
 
+    public static GerenciadorArvore<Cliente> inserirCliente= new GerenciadorArvore();
+
     public Cliente(String nome, String telefone, String email){
         this.codigo = contadorID++;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
 
-        appendCliente(this);
+        inserirCliente.inserir(this);
     }
 
     public String toString() {
