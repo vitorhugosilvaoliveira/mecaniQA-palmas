@@ -10,8 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Peca.arvorePeca.exibirOrdem();
 
-        System.out.println("------------------------------------------------------------------");
+
+        /*System.out.println("------------------------------------------------------------------");
 
         Cliente cliente1 = new Cliente("matheus","759681316","ansdjbakdb@gmail.com");
         Cliente cliente2 = new Cliente("felas","7035165131","15135asdas@gmail.com");
@@ -27,7 +29,7 @@ public class Main {
 
         Carro.arvoreCarro.exibirOrdem();
 
-        /*System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------");
 
         Servico serv1 = new Servico("realizar a troca do motor", 240,15000.00);
         Servico serv2 = new Servico("realizar a troca da pastilha de freio ",60 ,15000.00);
