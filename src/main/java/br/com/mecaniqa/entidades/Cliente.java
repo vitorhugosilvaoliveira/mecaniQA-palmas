@@ -1,7 +1,8 @@
 package br.com.mecaniqa.entidades;
 
+import br.com.mecaniqa.csv.EscritorCsv;
+import br.com.mecaniqa.csv.TratarAtributo;
 import br.com.mecaniqa.interfaces.Entidade;
-import br.com.mecaniqa.nos.NoCliente;
 
 public class Cliente implements Entidade<Cliente> {
     private static int contadorID = 1;
@@ -9,46 +10,48 @@ public class Cliente implements Entidade<Cliente> {
     public String nome;
     public String telefone;
     public String email;
-    public static NoCliente head = null;
 
-    public static GerenciadorArvore<Cliente> inserirCliente= new GerenciadorArvore();
+    public static GerenciadorArvore<Cliente> arvoreCliente = new GerenciadorArvore<>();
 
-    public Cliente(String nome, String telefone, String email){
+    static {
+        // executa esse comando primeiro(uma unica vez) para verificar os clientes existentes e retornar o codigo a partir disso.
+        br.com.mecaniqa.csv.LeitorCsv.importar("Clientes");
+    }
+
+    public Cliente(String nome, String telefone, String email) {
         this.codigo = contadorID++;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
 
-        inserirCliente.inserir(this);
+        arvoreCliente.inserir(this);
+        EscritorCsv.adicionarObjetoCsv(
+                this,
+                "./dados/Clientes.csv",
+                "Código; Nome; Telefone; Email"
+        );
+    }
+    //NOVO CONSTRUTOR: usado para continua de arcodo com id existe no arquivo .CSV
+    public Cliente(int codigo, String nome, String telefone, String email) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+
+        // Repõe na árvore da memória
+        arvoreCliente.inserir(this);
+
+        // Atualiza o contador para que o próximo cliente novo não repita IDs
+        if (codigo >= contadorID) {
+            contadorID = codigo + 1;
+        }
     }
 
     public String toString() {
-        return this.codigo + ";" + tratarAtributo(this.nome) + ";" + tratarAtributo(this.telefone) + ";" + tratarAtributo(this.email);
-    }
-    //metodo interno para ajustar o String e evitar que quebre o arquivo csv
-    private String tratarAtributo(String atributo){
-        if (atributo == null)
-            return "";
-        if (atributo.contains(";") || atributo.contains("\"") || atributo.contains("\n")){
-            atributo = atributo.replace("\"", "\"\"");
-            return "\"" + atributo + "\"";
-        }
-        return atributo;
-    }
-
-    private void appendCliente(Cliente value){
-
-        NoCliente novoNo = new NoCliente(value);
-
-        if (head == null){
-            head = novoNo;
-        }else {
-            NoCliente atual = head;
-            while(atual.next != null){
-                atual = atual.next;
-            }
-            atual.next = novoNo;
-        }
+        return this.codigo + ";" +
+                TratarAtributo.atributo(this.nome) +
+                ";" + TratarAtributo.atributo(this.telefone) +
+                ";" + TratarAtributo.atributo(this.email);
     }
 
     @Override
