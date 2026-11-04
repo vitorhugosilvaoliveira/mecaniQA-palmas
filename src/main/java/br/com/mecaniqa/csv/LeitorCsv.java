@@ -30,6 +30,7 @@ public class LeitorCsv {
                    case "./dados/Carros.csv" -> new Carro(Integer.parseInt(atributos[0]), atributos[1],atributos[2],Integer.parseInt(atributos[3]),atributos[4], Categoria.valueOf(atributos[5]),Integer.parseInt(atributos[6]));
                    case "./dados/OrdemServico.csv" -> new OrdemServico(Integer.parseInt(atributos[0]), Status.valueOf(atributos[1]), Servico.arvoreServico.encontrar(Integer.parseInt(atributos[2])));
                    case "./dados/Pedidos.csv" -> new Pedido();
+                   case "./dados/Rotas.csv" -> {for(String atributo : atributos){System.out.println(atributo);}}
                }
            }
        }catch(FileNotFoundException e){
@@ -47,6 +48,7 @@ public class LeitorCsv {
             case "Pecas" -> arquivo = "./dados/Pecas.csv";
             case "Servicos" -> arquivo = "./dados/Servicos.csv";
             case "OrdemServico" -> arquivo = "./dados/OrdemServico.csv";
+            case "Rotas" -> arquivo = "./dados/Rotas.csv";
         }
         return arquivo;
     }

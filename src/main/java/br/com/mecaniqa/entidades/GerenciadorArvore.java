@@ -23,6 +23,7 @@ public class GerenciadorArvore<T extends Entidade<T> > {
     public T encontrar (int codigo){
         return  this.arvoreAvl.encontrar(codigo);
     }
+
     public void exibirOrdem(){
         pecorrer(this.arvoreAvl.raiz);
 
