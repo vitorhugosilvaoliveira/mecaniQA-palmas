@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Peca.arvorePeca.exibirOrdem();
+        //Peca.arvorePeca.exibirOrdem();
         //LeitorCsv.importar("Rotas");
 
         /*System.out.println("------------------------------------------------------------------");
@@ -29,7 +29,7 @@ public class Main {
 
         Carro.arvoreCarro.exibirOrdem();
 
-        System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------");*/
 
         Servico serv1 = new Servico("realizar a troca do motor", 240,15000.00);
         Servico serv2 = new Servico("realizar a troca da pastilha de freio ",60 ,15000.00);
@@ -37,6 +37,7 @@ public class Main {
 
         Servico.arvoreServico.exibirOrdem();
 
+        /*
         System.out.println("------------------------------------------------------------------");
 
         OrdemServico OS1 = new OrdemServico(Status.EM_ABERTO, serv1);
