@@ -33,6 +33,9 @@ public class MecaniQAApplication {
             }
 
             switch (choice) {
+                // Aqui tinha o menu fornecido no template para integrar todas as funcionalidades do CRUD.
+                // Apenas a opção 6 (Adicionar Serviço) foi integrada; isso não penaliza diretamente o barema,
+                // mas o esperado era conectar o menu ao Gerenciador.
                 case 1:
                     System.out.println("Opção 1 selecionada: Adicionar Peça");
                     // Lógica para adicionar peça

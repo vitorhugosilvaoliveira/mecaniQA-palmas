@@ -5,6 +5,9 @@ import static br.com.mecaniqa.Peca.totalPecas;
 
 public class Gerenciador {
 
+    // Atenção: a classe Gerenciador acabou sendo usada apenas como um executor de testes (main),
+    // enquanto toda a lógica de negócio (CRUD e arrays estáticos) ficou dentro de Peca e Servico.
+    // Pelo barema, toda a lógica do CRUD deveria estar isolada em métodos estáticos aqui no Gerenciador!
     public static void main(String[] args) {
 
         Peca pc1= new Peca(1, "parafuso", "Bosch", 2.50, 5.00, 100);
