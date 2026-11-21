@@ -1,7 +1,6 @@
 package br.com.mecaniqa.grafo;
 
 import java.util.Objects;
-import java.util.StringJoiner;
 
 public class Local {
 
@@ -13,9 +12,7 @@ public class Local {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Local.class.getSimpleName() + "[", "]")
-                .add("nome='" + nome + "'")
-                .toString();
+        return this.nome;
     }
 
     @Override

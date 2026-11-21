@@ -3,13 +3,10 @@ package br.com.mecaniqa.csv;
 import br.com.mecaniqa.entidades.*;
 import br.com.mecaniqa.enums.Categoria;
 import br.com.mecaniqa.enums.Status;
-import br.com.mecaniqa.grafo.Grafo;
-import java.math.BigDecimal;
 
 public class CriadorObjeto {
 
     public static void criarObjeto(String[] atributos, String arquivo){
-        Grafo grafo = new Grafo();
         switch (arquivo){
             case "./dados/Pecas.csv" -> new Peca(
                     Integer.parseInt(atributos[0]),
@@ -48,12 +45,6 @@ public class CriadorObjeto {
             );
 
             case "./dados/Pedidos.csv" -> new Pedido();
-
-            case "./dados/Rotas.csv" -> grafo.inserirRota(
-                    atributos[0],
-                    atributos[1],
-                    BigDecimal.valueOf(Long.parseLong(atributos[2]))
-            );
         }
     }
 }

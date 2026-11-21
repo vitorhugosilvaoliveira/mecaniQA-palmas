@@ -1,17 +1,15 @@
 package br.com.mecaniqa.grafo;
-
-import java.math.BigDecimal;
 import java.util.*;
 
 public class Grafo {
     // Mapas usados para armazenar o conjunto de locais e vias do grafo
     public Map<Local, List<Local>> localizacoes;
-    public Map<Via, BigDecimal> distancias;
+    public Map<Via, Double> pesos;
 
     //construtor que inicializa os mapas para serem preechidos
     public Grafo(){
         this.localizacoes = new HashMap<>();
-        this.distancias = new HashMap<>();
+        this.pesos = new HashMap<>();
     }
 
     public void addLocal(String nome){
@@ -19,7 +17,7 @@ public class Grafo {
         localizacoes.putIfAbsent(new Local(nome), new ArrayList<>());
     }
 
-    public void inserirRota(String local1, String local2, BigDecimal distancia){
+    public void inserirRota(String local1, String local2, double distancia){
         // Insere os locais no mapa
         addLocal(local1);
         addLocal(local2);
@@ -33,14 +31,28 @@ public class Grafo {
         this.localizacoes.get(localA).add(localB);
         this.localizacoes.get(localB).add(localA);
         // Insere a via no mapa com seu peso correspondente
-        this.distancias.put(via,distancia);
+        this.pesos.put(via,distancia);
+    }
+    // Devolve os pesos das arestas (vias)
+    public double getPeso(Local origem, Local destino){
+        Via via = new Via(origem, destino);
+        return pesos.get(via);
+    }
+    // Devolve os vizinhos de um vértice(local)
+    public List<Local> getVizinhos(String nome){
+        Local local = new Local(nome);
+        return localizacoes.get(local);
+    }
+    // Devolve o conjunto de vértices(locais) do grafo
+    public Set<Local> getLocalizacoes(){
+        return localizacoes.keySet();
     }
 
     @Override
     public String toString() {
         return new StringJoiner(", ", Grafo.class.getSimpleName() + "[", "]")
                 .add("localizacoes=" + localizacoes)
-                .add("pesos=" + distancias)
+                .add("pesos=" + pesos)
                 .toString();
     }
 
@@ -48,7 +60,7 @@ public class Grafo {
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
         Grafo grafo = (Grafo) object;
-        return Objects.equals(localizacoes, grafo.localizacoes) && Objects.equals(distancias, grafo.distancias);
+        return Objects.equals(localizacoes, grafo.localizacoes) && Objects.equals(pesos, grafo.pesos);
     }
 
 }
