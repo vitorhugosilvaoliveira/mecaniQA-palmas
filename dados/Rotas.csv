@@ -1,4 +1,14 @@
-origem;Destino;Distancia_em_Km
+Origem;Destino;Distancia_em_Km
 Centro_Distribuicao;Filial_Barauna;12
 Filial_Barauna;Filial_Tomba;8
 Centro_Distribuicao;Filial_Tomba;15
+Centro_Distribuicao;Filial_Kalilandia;5
+Centro_Distribuicao;Filial_Cidade_Nova;7
+Filial_Kalilandia;Filial_Capuchinhos;4
+Filial_Cidade_Nova;Filial_Santa_Monica;6
+Filial_Tomba;Filial_Mangabeira;9
+Filial_Barauna;Filial_Sobradinho;10
+Filial_Santa_Monica;Filial_Mangabeira;5
+Filial_Capuchinhos;Filial_Campo_Limpo;11
+Filial_Sobradinho;Filial_Campo_Limpo;7
+Filial_Kalilandia;Filial_Cidade_Nova;3
