@@ -88,4 +88,37 @@ public class Djikstra {
         return caminho;
     }
 
+    public void exibirRotaCompleta(Grafo rotas, Local origem, Local destino) {
+        List<Local> caminho = getCaminho(destino);
+        Double custoTotal = this.distancias.get(destino);
+
+        if (caminho == null || caminho.isEmpty() || custoTotal == null || custoTotal == Double.POSITIVE_INFINITY) {
+            System.out.println("Não existe rota disponível de " + origem + " até " + destino + ".");
+            return;
+        }
+
+        System.out.println("\n=== ROTA DE ENTREGA ===");
+        System.out.println("Origem:  " + origem);
+        System.out.println("Destino: " + destino);
+
+        System.out.print("Percurso: ");
+        for (int i = 0; i < caminho.size(); i++) {
+            System.out.print(caminho.get(i));
+            if (i < caminho.size() - 1) {
+                System.out.print(" -> ");
+            }
+        }
+        System.out.println();
+
+        System.out.println("Arestas percorridas:");
+        for (int i = 0; i < caminho.size() - 1; i++) {
+            Local atual = caminho.get(i);
+            Local proximo = caminho.get(i + 1);
+            double pesoTrecho = rotas.getPeso(atual, proximo);
+            System.out.println("  - " + atual + " -> " + proximo + " | Custo: " + pesoTrecho + " km");
+        }
+
+        System.out.println("Custo total: " + custoTotal + " km");
+    }
+
 }

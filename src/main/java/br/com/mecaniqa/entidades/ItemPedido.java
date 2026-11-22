@@ -36,4 +36,9 @@ public class ItemPedido {
     void setProximo(ItemPedido proximo) {
         this.proximo = proximo;
     }
+
+    @Override
+    public String toString() {
+        return peca + " | Qtd: " + quantidade;
+    }
 }

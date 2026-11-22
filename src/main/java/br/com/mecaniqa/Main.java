@@ -5,6 +5,9 @@ import br.com.mecaniqa.entidades.*;
 import br.com.mecaniqa.grafo.Djikstra;
 import br.com.mecaniqa.grafo.Grafo;
 import br.com.mecaniqa.grafo.Local;
+import br.com.mecaniqa.grafo.MenuLogisticaEntrega;
+
+import java.util.Scanner;
 
 public class Main {
 
@@ -57,13 +60,28 @@ public class Main {
         Grafo grafo = new Grafo();
         grafo.inserirRota("Centro_Distribuicao","Filial_Barauna",12);
         grafo.inserirRota("Filial_Barauna","Filial_Tomba",8);
-        grafo.inserirRota("Centro_Distribuicao","Filial_Tomba",15);*/
+        grafo.inserirRota("Centro_Distribuicao","Filial_Tomba",15);
 
 
         Djikstra djikstra = new Djikstra();
         //importa de arquivo Rotas.csv
         djikstra.inicializar(Grafo.instancia,"Centro_Distribuicao");
-        System.out.println(djikstra.getCaminho(new Local("Filial_Tomba")));
+        System.out.println(djikstra.getCaminho(new Local("Filial_Tomba")));*/
+
+        LeitorCsv.importar("Pedidos");
+        LeitorCsv.importar("OrdemServico");
+        LeitorCsv.importar("Pecas");
+        LeitorCsv.importar("Servicos");
+
+        Pedido p = new Pedido();
+        Peca peca1 = Peca.arvorePeca.encontrar(1);
+        if (peca1 != null) {
+            p.adicionarItem(peca1, 2);
+        }
+        System.out.println("Pedido criado com código: " + p.getCodigo());
+
+        Scanner scanner = new Scanner(System.in);
+        MenuLogisticaEntrega.menuLogisticaEntrega(scanner);
 
     }
 }

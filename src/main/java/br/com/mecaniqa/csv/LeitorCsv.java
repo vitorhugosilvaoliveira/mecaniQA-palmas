@@ -39,6 +39,7 @@ public class LeitorCsv {
             case "Servicos" -> arquivo = "./dados/Servicos.csv";
             case "OrdemServico" -> arquivo = "./dados/OrdemServico.csv";
             case "Rotas" -> arquivo = "./dados/Rotas.csv";
+            case "Pedidos" -> arquivo = "./dados/Pedidos.csv";
         }
         return arquivo;
     }
