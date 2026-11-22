@@ -3,6 +3,7 @@ package br.com.mecaniqa.csv;
 import br.com.mecaniqa.entidades.*;
 import br.com.mecaniqa.enums.Categoria;
 import br.com.mecaniqa.enums.Status;
+import br.com.mecaniqa.grafo.Grafo;
 
 public class CriadorObjeto {
 
@@ -43,6 +44,12 @@ public class CriadorObjeto {
                     Status.valueOf(atributos[1]),
                     Servico.arvoreServico.encontrar(Integer.parseInt(atributos[2]))
             );
+            case "./dados/Rotas.csv" ->{
+                String origem = atributos[0].trim();
+                String destino = atributos[1].trim();
+                double distancia = Double.parseDouble(atributos[2].trim());
+                Grafo.instancia.inserirRota(origem, destino, distancia);
+            }
 
             case "./dados/Pedidos.csv" -> new Pedido();
         }

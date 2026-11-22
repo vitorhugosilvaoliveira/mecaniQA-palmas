@@ -6,6 +6,12 @@ public class Grafo {
     public Map<Local, List<Local>> localizacoes;
     public Map<Via, Double> pesos;
 
+    public static Grafo instancia = new Grafo();
+
+    static {
+        br.com.mecaniqa.csv.LeitorCsv.importar("Rotas");
+    }
+
     //construtor que inicializa os mapas para serem preechidos
     public Grafo(){
         this.localizacoes = new HashMap<>();
@@ -26,12 +32,14 @@ public class Grafo {
         Local localB = new Local(local2);
         //Cria a via
         Via via = new Via(localA,localB);
+        Via viaVolta = new Via(localB,localA);
 
         // Acessa a lista de adjacência por meio da chave(local) e insere o local vizinho na lista
         this.localizacoes.get(localA).add(localB);
         this.localizacoes.get(localB).add(localA);
         // Insere a via no mapa com seu peso correspondente
         this.pesos.put(via,distancia);
+        this.pesos.put(viaVolta,distancia);
     }
     // Devolve os pesos das arestas (vias)
     public double getPeso(Local origem, Local destino){

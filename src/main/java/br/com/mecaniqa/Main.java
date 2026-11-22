@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Peca.arvorePeca.exibirOrdem();
-        LeitorCsv.importar("Rotas");
+        //LeitorCsv.importar("Rotas");
 
         /*System.out.println("------------------------------------------------------------------");
 
@@ -52,15 +52,17 @@ public class Main {
         Pedido p = new Pedido();
         p.adicionarItem(Peca.arvorePeca.encontrar(1), 2);
         Pedido.arvorePedido.exibirOrdem();
-        System.out.println(p.calcularValorTotal());*/
+        System.out.println(p.calcularValorTotal());
 
         Grafo grafo = new Grafo();
         grafo.inserirRota("Centro_Distribuicao","Filial_Barauna",12);
         grafo.inserirRota("Filial_Barauna","Filial_Tomba",8);
-        grafo.inserirRota("Centro_Distribuicao","Filial_Tomba",15);
+        grafo.inserirRota("Centro_Distribuicao","Filial_Tomba",15);*/
+
 
         Djikstra djikstra = new Djikstra();
-        djikstra.inicializar(grafo,"Centro_Distribuicao");
+        //importa de arquivo Rotas.csv
+        djikstra.inicializar(Grafo.instancia,"Centro_Distribuicao");
         System.out.println(djikstra.getCaminho(new Local("Filial_Tomba")));
 
     }
